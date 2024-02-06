@@ -1,15 +1,15 @@
 /* Markdown */
 :root{
---maincolor: red;
---bordercl: #50fa7b;
+--maincolor: rgb(255, 0, 0);
+--bordercl: rgb(0, 255, 0);
 --callouctcolor: navy;
 --hovercolor:navy;
---darkMaincolor: #50fa7b;
+--darkMaincolor: rgb(0, 255, 0);
 }
 html {
   color: #232333;
   font-family: 'Jetbrains Mono', monospace;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6em;
 }
 body{
