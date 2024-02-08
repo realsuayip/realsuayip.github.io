@@ -327,3 +327,12 @@ table td{
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
+
+details.no-marker > summary {
+  list-style: none;
+}
+
+details.no-marker > summary::marker, /* Latest Chrome, Edge, Firefox */
+details.no-marker > summary::-webkit-details-marker /* Safari */ {
+  display: none;
+}
