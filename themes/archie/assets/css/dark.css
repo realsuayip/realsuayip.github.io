@@ -66,8 +66,17 @@ a {
   border-bottom: 3px solid var(--darkMaincolor);
   color: inherit;
 }
-a:hover {
+a:hover, .like-a:hover {
   background-color: var(--darkMaincolor);
+  color: black;
+}
+
+a.muted {
+  border: none;
+  color: #999;
+}
+
+a.muted:hover {
   color: black;
 }
 

@@ -3,12 +3,24 @@
 	<article>
 		<div class="title">
 			<h1 class="title">{{ .Title }}</h1>
-			<details class="no-marker" style="cursor: pointer; display: inline-block">
-          		<summary>
-					<span class="meta" title="Click here to display table of contents">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</span>
-          		</summary>
-          		{{ .TableOfContents }}
-        	</details>
+			<div style="display: flex; justify-content: space-between;">
+				<details class="no-marker" style="cursor: pointer; display: inline-block">
+					<summary>
+						<span class="meta like-a" title="Click here to display table of contents">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</span>
+					</summary>
+					{{ .TableOfContents }}
+				</details>
+				<small>
+					{{ if .IsPage}}
+					{{ if .File.Path}}
+					{{ $.Scratch.Set "FilePath" .File.Path }}
+					{{ end }}
+					{{ with .Site.Params.GithubEdit}}
+					<a target="_blank" class="muted" href='{{ . }}{{ $.Scratch.Get "FilePath" }}'>Edit this page</a>
+					{{ end }}
+					{{ end }}
+				</small>
+			</div>
 		</div>
 		{{ if isset .Params "tldr" }}
 		<div class="tldr">
