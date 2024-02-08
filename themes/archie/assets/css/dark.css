@@ -133,8 +133,8 @@ a:hover {
 .highlight pre code[class*='language-python']::before,
 .highlight pre code[class*='language-py']::before {
   content: 'py';
-  background: blue;
-  color: yellow ;
+  background: color(srgb 0.2078 0.4471 0.6471);
+  color: white ;
 }
 .highlight pre code[class*='language-css']::before{
   content: 'css';
