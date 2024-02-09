@@ -160,9 +160,7 @@ h6::before { color: var(--maincolor); content: '###### '; }
 footer {
   display: flex;
   align-items: center;
-  border-top: 0.4rem dotted var(--bordercl);
   padding: 2rem 0rem;
-  margin-top: 2rem;
 }
 .soc {
   display: flex;
@@ -335,4 +333,10 @@ details.no-marker > summary {
 details.no-marker > summary::marker, /* Latest Chrome, Edge, Firefox */
 details.no-marker > summary::-webkit-details-marker /* Safari */ {
   display: none;
+}
+
+.page-bottom-navigation {
+  display: flex;
+  justify-content: space-between;
+  font-size: .9rem;
 }
