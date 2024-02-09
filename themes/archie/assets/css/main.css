@@ -20,7 +20,7 @@ body{
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-p, ul, ol {
+p, .body > ul, .body > ol {
   font-family: 'Inter', sans-serif;
   line-height: 1.5;
 }
@@ -160,6 +160,7 @@ h6::before { color: var(--maincolor); content: '###### '; }
 footer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 2rem 0rem;
 }
 .soc {
@@ -227,7 +228,7 @@ justify-content: space-between;
   background-color: var(--hovercolor); 
 }
 svg{
-  max-height: 15px;
+  max-height: 1.25rem;
 }
 .soc:hover{
   color: white;
