@@ -39,10 +39,10 @@ uygulamalarının kullanabileceği (örneğin gösterim adı) bilgiler bulunuyor
 Şimdi örnek bir model inceleyelim:
 
 ```python
-class Artist(models.Model):  
-    name = models.CharField(max_length=256)  
-    surname = models.CharField(max_length=256)  
-  
+class Artist(models.Model):
+    name = models.CharField(max_length=256)
+    surname = models.CharField(max_length=256)
+
     birth_date = models.DateField()
 ```
 
@@ -192,7 +192,7 @@ Bazen model instance’lar üzerinden çeşitli hesaplamalar yapmak isteyebiliyo
 pek çok senaryo düşünülebilir. Bu durumda akla gelen ilk çözüm şu şekilde:
 
 ```python
-"Artist: %s %s" % (artist.name, artist.surname) 
+"Artist: %s %s" % (artist.name, artist.surname)
 ```
 
 Gayet etkili ve güzel bir çözüm. Tek sıkıntısı, artistin ad ve soyadını
@@ -201,14 +201,14 @@ kalmamız. Django’da modellerin metotları da tam buna çözüm oluyor, geliş
 bir şekilde model instance’a metotlar ve nitelikler ekleyebiliyoruz:
 
 ```python
-class Artist(models.Model):  
-    name = models.CharField(max_length=256)  
-    surname = models.CharField(max_length=256)  
-  
-    birth_date = models.DateField()  
-  
-    @property  
-    def full_name(self):  
+class Artist(models.Model):
+    name = models.CharField(max_length=256)
+    surname = models.CharField(max_length=256)
+
+    birth_date = models.DateField()
+
+    @property
+    def full_name(self):
         return "Artist: %s %s" % (self.name, self.surname)
 ```
 
@@ -293,7 +293,7 @@ sayısını bir arttırmamız gerektiğini farz edelim, bu durumda şöyle bir y
 sıkça yapılıyor:
 
 ```python
-artist.song_count += 1  
+artist.song_count += 1
 artist.save(update_fields=["song_count"])
 ```
 
@@ -304,7 +304,7 @@ Böyle bağıl bir güncellemede bu durumun önüne geçmek için Django’nun
 sağladığı `F` ifadesini kullanmamız gerek:
 
 ```python
-artist.song_count = F("song_count") + 1  
+artist.song_count = F("song_count") + 1
 artist.save(update_fields=["song_count"])
 ```
 
@@ -399,7 +399,7 @@ Artist.objects.filter(surname__iexact="Astley")
 mi diye bakıyor. Lookup’lar için genel söz dizimi şu şekilde:
 
 ```python
-fieldismi__lookupismi="değer"
+fieldismi__lookupismi = "değer"
 ```
 
 İlişkisel field’lerde tablolar arası süzme için de aynı söz dizimini
@@ -407,7 +407,7 @@ kullanıyoruz. Bu örnekte (artistinin soy adı Astley olan tüm şarkılar) hem
 tablolar arası ilişki için bir lookup, hem de sütun için bir lookup var:
 
 ```python
-Song.objects.filter(artist__surname__iexact="Astley") 
+Song.objects.filter(artist__surname__iexact="Astley")
 ```
 
 Eğer birden fazla şartımız varsa, bu metotlara istediğiniz kadar süzgeci
@@ -416,8 +416,7 @@ bahsetmiştik, bunun için bir örnek yapalım. Adı Rick olmayan fakat soy adı
 Astley olan tüm artistleri bulmak için:
 
 ```python
-Artist.objects.filter(surname__iexact="astley")  
-              .exclude(name__iexact="rick")
+Artist.objects.filter(surname__iexact="astley").exclude(name__iexact="rick")
 ```
 
 `filter` ve `exclude` metotlarını tekrar tekrar zincirlememekte fayda var,
@@ -427,8 +426,8 @@ da bir  _problemimiz_ var: Bu  metodu zincirlemek ile metot içine çok sayıda
 argüman göndermek arasında ne fark var?  Örneğin şu iki sorguya bakalım:
 
 ```python
-Artist.objects.filter(surname="Astley").filter(name="Rick") # 1  
-Artist.objects.filter(surname="Astley", name="Rick") # 2
+Artist.objects.filter(surname="Astley").filter(name="Rick")  # 1
+Artist.objects.filter(surname="Astley", name="Rick")  # 2
 ```
 
 Görünüşe göre, örneğimizde birinci sorguda önce soy adı Astley olanları
@@ -442,8 +441,10 @@ field’leri ilişkisel farz edelim, her artistin bir profili olsun ve bu bilgil
 o modelde bulunsun, bu durumda:
 
 ```python
-Artist.objects.filter(profile__surname="Astley").filter(profile__name="Rick") #1
-Artist.objects.filter(profile__surname="Astley", profile__name="Rick") # 2
+Artist.objects.filter(profile__surname="Astley").filter(
+    profile__name="Rick"
+)  # 1
+Artist.objects.filter(profile__surname="Astley", profile__name="Rick")  # 2
 ```
 
 İkinci durum yine tahmin ettiğimiz gibi olacak.  İlk sorguda ise ismi Rick 
@@ -506,7 +507,7 @@ kullanıldığı zaman.  `len`  ve  `bool`  özellikle parantez gerektiren kulla
 
 ```python
 qs = Artist.objects.filter(surname="Astley", name="Rick")
-if qs:  
+if qs:
     print("Artist found!")
 ```
 
@@ -646,8 +647,9 @@ yine bir sefer daha ortalama için aggregation yapmamız gerek. Sonuçta ortaya
 şöyle bir yapı çıkıyor:
 
 ```python
-Artist.objects.annotate(song_count=Count("song_set"))  
-              .aggregate(average_song_count=Avg("song_count"))
+Artist.objects.annotate(song_count=Count("song_set")).aggregate(
+    average_song_count=Avg("song_count")
+)
 ```
 
 Şimdi biraz da `values` metodu üzerinde duralım. Normalde bu metot sizin
@@ -657,8 +659,7 @@ belirliyor. O yüzden  `values`  kullanırken bunu göz önünde bulundurmakta f
 var. Örneğin şu sorguyu ele alalım:
 
 ```python
-Artist.objects.values("name")  
-              .annotate(song_count=Count("song_set"))
+Artist.objects.values("name").annotate(song_count=Count("song_set"))
 ```
 
 Bu sorguda `GROUP BY` ifadesinde `name` yer alacağı için artistler adlarına
@@ -680,10 +681,11 @@ yardımcı olacaklarını söylemiştik. Örneğin sürekli olarak belirli tip a
 oluşturabiliriz. Şimdi örnek bir manager inceleyelim:
 
 ```python
-class ArtistManager(models.Manager):  
-    def popular(self):  
-        return self.alias(song_hits=Sum("song_set__daily_hit"))  
-                   .filter(song_hits__gt=500)
+class ArtistManager(models.Manager):
+    def popular(self):
+        return self.alias(song_hits=Sum("song_set__daily_hit")).filter(
+            song_hits__gt=500
+        )
 ```
 
 Bu manager’a  `popular`  isimli metot eklenmiş, bu sayede popüler artistleri
@@ -716,11 +718,14 @@ Manager’ın öncül `QuerySet` biçimine değiştirmek için `get_queryset` is
 manager oluşturup öncül  `QuerySet`  biçimini değiştirebilirdik:
 
 ```python
-class ArtistManager(models.Manager):  
-    def get_queryset(self):  
-        return super().get_queryset()  
-                      .alias(song_hits=Sum("song_set__daily_hit"))  
-                      .filter(song_hits__gt=500)
+class ArtistManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super()
+            .get_queryset()
+            .alias(song_hits=Sum("song_set__daily_hit"))
+            .filter(song_hits__gt=500)
+        )
 ```
 
 Hangi yöntemi kullanacağınız sizin pragmatik seçimlerinize kalmış. Bir modele

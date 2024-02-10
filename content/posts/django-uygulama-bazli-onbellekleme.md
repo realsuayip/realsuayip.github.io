@@ -27,8 +27,8 @@ veri tabanına fazladan bir istek atmak istemiyoruz, her ne kadar bu istek çok
 hızlı çalışsa da. Örnek bir context processor:
 
 ```python
-def categories(request):  
-    return {"categories": Category.objects.all()
+def categories(request):
+    return {"categories": Category.objects.all()}
 ```
 
 Şimdi bu yapıyı ön belleğe (bundan sonra cache diyelim) alalım. Bunu yapmak
@@ -38,16 +38,17 @@ api’yi açıklamak istiyorum:
 ```python
 from django.core.cache import cache
 
-def categories(request):  
-    cache_key = "header_categories"  
-    value = Category.objects.all()  
-  
-    if cached_value := cache.get(cache_key):  
-        value = cached_value  
-    else:  
-        cache_timeout = 86400  
-        cache.set(cache_key, value, cache_timeout)  
-  
+
+def categories(request):
+    cache_key = "header_categories"
+    value = Category.objects.all()
+
+    if cached_value := cache.get(cache_key):
+        value = cached_value
+    else:
+        cache_timeout = 86400
+        cache.set(cache_key, value, cache_timeout)
+
     return {"categories": value}
 ```
 

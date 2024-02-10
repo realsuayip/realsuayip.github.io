@@ -29,9 +29,9 @@ decorator nedir bilmiyorsanız, ya da kafanızda canlanmadıysa şu örneğe
 bakabilirsiniz:
 
 ```python
-@app.route('/')  
-def home():  
-    return render_template('home.html')
+@app.route("/")
+def home():
+    return render_template("home.html")
 ```
 
 Bu örnek Flask’dan, `app.route` isimli bir decorator, `home` isimli bir
@@ -76,8 +76,8 @@ _Hatta çoğu decorator çağrılabilen döner._
 decorator’ların. Şimdi örnek bir decorator görelim ve açıklayalım:
 
 ```python
-def deco(func):  
-    print("Decorated %s" % func)      
+def deco(func):
+    print("Decorated %s" % func)
     return func
 ```
 
@@ -95,11 +95,11 @@ döndürebiliriz (bunu bir nevi sonraki adımda yapıyoruz).
 Şimdi nesnelerin çağırılma anına etki eden bir decorator yazalım:
 
 ```python
-def deco(func):  
-    def inner(*args, **kwargs):  
-        print("Calling %s" % func)  
-        return func(*args, **kwargs)  
-  
+def deco(func):
+    def inner(*args, **kwargs):
+        print("Calling %s" % func)
+        return func(*args, **kwargs)
+
     return inner
 ```
 
@@ -117,9 +117,10 @@ Yani decorator yazdık iyi tamam, peki bir fonksiyonu nasıl decorate edeceğiz?
 Şimdi örneği görelim:
 
 ```python
-def echo(number):  
-    return number  
-  
+def echo(number):
+    return number
+
+
 echo = deco(echo)
 ```
 
@@ -133,8 +134,8 @@ sıradaki göstereceğim syntax’i direk yutarsanız ne yaptığımızı anlama
 zorlaşabilir. İşte decorator’ları uygulamanın bir başka yolu:
 
 ```python
-@deco  
-def echo(number):  
+@deco
+def echo(number):
     return number
 ```
 
@@ -146,27 +147,27 @@ Python tarafından bize sunuluyor; çoğunlukla da decorator’lar böyle uygula
 Şimdi şu koda bir bakalım:
 
 ```python
-def deco0(func):  
-    print("Decorating %s" % func)  
-    return func  
-  
-
-def deco(func):  
-    def inner(*args, **kwargs):  
-        print("Calling %s" % func)  
-        return func(*args, **kwargs)  
-  
-    return inner  
+def deco0(func):
+    print("Decorating %s" % func)
+    return func
 
 
-def echo(number):  
-    return number  
-  
-  
-echo_1 = deco(echo)  
-echo_2 = deco0(echo)  
-  
-echo_1 is echo  # output: False  
+def deco(func):
+    def inner(*args, **kwargs):
+        print("Calling %s" % func)
+        return func(*args, **kwargs)
+
+    return inner
+
+
+def echo(number):
+    return number
+
+
+echo_1 = deco(echo)
+echo_2 = deco0(echo)
+
+echo_1 is echo  # output: False
 echo_2 is echo  # output: True
 ```
 
@@ -195,6 +196,7 @@ decorator. Şimdi bu decorator’un düzgün haline bakalım:
 ```python
 import functools
 
+
 def deco(func):
     @functools.wraps(func)
     def inner(*args, **kwargs):
@@ -207,11 +209,11 @@ def deco(func):
 yani:
 
 ```python
-def deco(func):  
-    def inner(*args, **kwargs):  
-        print("Calling %s" % func)  
-        return func(*args, **kwargs)  
-  
+def deco(func):
+    def inner(*args, **kwargs):
+        print("Calling %s" % func)
+        return func(*args, **kwargs)
+
     return functools.wraps(func)(inner)
 ```
 
@@ -248,10 +250,11 @@ Daha az bilinen şey ise type, 3 argüman aldığı zaman yeni bir ‘type’ ol
 Peki ‘type’ nedir? Önce bir class tanımı yapalım:
 
 ```python
-class Person:  
-    def __init__(self, name):  
-        self.name = name  
-  
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+
 ismet = Person(name="İsmet")
 ```
 
@@ -279,10 +282,11 @@ davranışlardan biri de oluşturulma şeklidir. Eğer bir metaclass belirtmezse
 oluşturduğunuz tüm type’lar ‘type’ metaclass’i ile oluşturulur, yani şu şekilde:
 
 ```python
-def __init__(self, name):  
-    self.name = name  
-  
-Person = type("Person", (), {"__init__": __init__})  
+def __init__(self, name):
+    self.name = name
+
+
+Person = type("Person", (), {"__init__": __init__})
 ismet = Person(name="İsmet")
 ```
 
@@ -313,15 +317,15 @@ edebiliriz. **Metaclass subclasslara propagete ettiği için** tüm subclasslar
 da decorate olmuş olur. Şimdi örnek üzerinden inceleyelim:
 
 ```python
-class PersonMeta(type):  
-    def __new__(mcs, name, bases, classdict):  
-        cls = super().__new__(mcs, name, bases, classdict)  
-        cls = super_useful_decorator(cls)  
-        return cls  
-  
-  
-class Person(metaclass=PersonMeta):  
-    def __init__(self, name):  
+class PersonMeta(type):
+    def __new__(mcs, name, bases, classdict):
+        cls = super().__new__(mcs, name, bases, classdict)
+        cls = super_useful_decorator(cls)
+        return cls
+
+
+class Person(metaclass=PersonMeta):
+    def __init__(self, name):
         self.name = name
 ```
 
@@ -373,15 +377,15 @@ Bu sayede Model class’ini subtype etmiş tüm classların listesi elimizde olu
 örnek vermem gerekirse:
 
 ```python
-registry = []  
+registry = []
 
 
-class Person:  
-    def __init__(self, name):  
-        self.name = name  
-  
-    def __init_subclass__(cls, **kwargs):  
-        super().__init_subclass__(**kwargs)  
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
         registry.append(cls)
 ```
 
@@ -391,17 +395,17 @@ keyword argümanları da tanımayabilirsiniz, bu argümanlar class’ın tanım�
 verilebiliyor, mesela:
 
 ```python
-class Person:  
-    def __init__(self, name):  
-        self.name = name  
-  
-    def __init_subclass__(cls, location, **kwargs):  
-        super().__init_subclass__(**kwargs)  
-        cls.location = location  
-        registry.append(cls)  
-  
-  
-class RichPerson(Person, location="Los Angeles"):  
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def __init_subclass__(cls, location, **kwargs):
+        super().__init_subclass__(**kwargs)
+        cls.location = location
+        registry.append(cls)
+
+
+class RichPerson(Person, location="Los Angeles"):
     pass
 ```
 
@@ -424,10 +428,11 @@ bir başka tabirle “nokta operatörünü özelleştirmek”. Mesela şu örnek
 gidelim:
 
 ```python
-class Person:  
-    name = None  
-  
-person = Person()  
+class Person:
+    name = None
+
+
+person = Person()
 person.name = "İsmet"
 ```
 
@@ -447,29 +452,28 @@ descriptor’un sağladığı soyutlaştırmayı kullanabiliriz. Şimdi yukarıd
 işlevselliğin kazandırıldığı bir örnek görelim:
 
 ```python
-class Name:  
-    names = []  
-    current_name = None  
-  
-    def __set__(self, instance, value):  
-        if len(value) < 3:  
-            raise ValueError(  
-                "Please provide a name that"  
-                " is at least 3 characters."  
-            )  
-  
-        self.names.append(value)  
-        instance.old_names = self.names[:-1]  
-        self.current_name = value  
-  
-    def __get__(self, instance, owner):  
-        if self.current_name is None:  
-            raise ValueError("Name is not set.")  
-  
-        return self.current_name  
-  
-  
-class Person:  
+class Name:
+    names = []
+    current_name = None
+
+    def __set__(self, instance, value):
+        if len(value) < 3:
+            raise ValueError(
+                "Please provide a name that" " is at least 3 characters."
+            )
+
+        self.names.append(value)
+        instance.old_names = self.names[:-1]
+        self.current_name = value
+
+    def __get__(self, instance, owner):
+        if self.current_name is None:
+            raise ValueError("Name is not set.")
+
+        return self.current_name
+
+
+class Person:
     name = Name()
 ```
 
@@ -498,7 +502,7 @@ size tanıdık gelmiş olabilir. Örneğin Django’da ve pek çok ORM’da şu 
 vardır:
 
 ```python
-class Person(models.Model):  
+class Person(models.Model):
     name = models.CharField()
 ```
 
@@ -517,13 +521,13 @@ Burada da imdadımıza `__set_name__` yetişiyor. Bu metot bize descriptor’un
 nasıl isimlendirildiği konusunda bilgi veriyor. Örnek verelim:
 
 ```python
-class Name:  
-    names = []  
-    current_name = None  
-  
-    def __set_name__(self, owner, name):  
-        self.field_name = name  
-      
+class Name:
+    names = []
+    current_name = None
+
+    def __set_name__(self, owner, name):
+        self.field_name = name
+
     ...
 ```
 
@@ -539,14 +543,15 @@ Descriptor konusunda ufkunuzun açılması için Python dokümantasyonundan bir
 olarak almaya yarıyor:
 
 ```python
-class DirectorySize:  
-    def __get__(self, instance, owner):  
-        return len(os.listdir(instance.dirname))  
-  
-class Directory:  
-    size = DirectorySize()  
-  
-    def __init__(self, dirname):  
+class DirectorySize:
+    def __get__(self, instance, owner):
+        return len(os.listdir(instance.dirname))
+
+
+class Directory:
+    size = DirectorySize()
+
+    def __init__(self, dirname):
         self.dirname = dirname
 ```
 
