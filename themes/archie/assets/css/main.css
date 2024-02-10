@@ -104,7 +104,6 @@ code {
     background-color: #f1f1f1;
     padding: .1em .2em;
     font-family: "JetBrains Mono", monospace;
-    font-size: 1rem;
 }
 
 pre {
@@ -291,6 +290,7 @@ svg {
 
 .highlight pre code[class*="language-"] {
     -webkit-overflow-scrolling: touch;
+    font-size: 0.9375rem;
 }
 
 .highlight pre code[class*="language-"]::before {
