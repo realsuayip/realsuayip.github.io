@@ -10,7 +10,7 @@ tags = ["free-software", "linux", "ethics", "english"]
 slug = "notion-of-free-software-for-beginners"
 +++
 
-About more than a year ago, I needed to write an argumentative &  _academic_ 
+About more than a year ago, I needed to write an argumentative &  _academic_
 research paper for my course. There was no subject restriction, so I chose to
 contrast free software with proprietary software. Now, this was a bit problem
 for me because my professor doesn’t have any interest in computers at all.
@@ -18,7 +18,7 @@ I agree that this subject was too specific for such assignment. The expected
 topics were quite generic: "_Social media: Bad or good?_" , "_Veganism: Yes or
 no?_", "_Vaccines: Safe or not?_" (Don’t panic! They always defend that it is
 safe) and so on. Due to this expectation, I went the safe way and organized the
-paper so that a person with no tech related knowledge on the field could 
+paper so that a person with no tech related knowledge on the field could
 understand it easily.
 
 For those  _tech guys_  reading this, you may find several instances of
@@ -27,7 +27,7 @@ and you **are** right. Please don’t be too harsh on me (especially Apple users
 **I’m trying to prove a point to a non-tech user**, you may as well take it for
 _the sake of example_.
 
-This article (or whatever you call it) is centered around  [Stallman](https://stallman.org/)’s 
+This article (or whatever you call it) is centered around  [Stallman](https://stallman.org/)’s
 _strict_  ideas. So if you don’t like him, you may not really like this
 article. I also admit, although I say that the article is based on his ideas,
 it is really based on my interpretation of his ideas, so you may find that in
@@ -36,7 +36,7 @@ advocate some of the concepts given in the text. So I admit it has some flaws,
 but I’m sure the message will be given and the notion will be fully understood.
 
 If you find the article too exhaustive, you may instead watch this video where
-Stallman describes free software. The article more or the less explains the 
+Stallman describes free software. The article more or the less explains the
 same things with explicit examples. (I recommend watching it anyway because he
 slams Microsoft real good):
 
@@ -179,7 +179,7 @@ series on the market, and it performs worse than its counterparts in terms of
 battery life and overall hardware performance, it continues to be the most
 dominant smartphone on the market. The reason is that the company values the
 software of the smartphones; in fact, users may be paying money equivalent to
-or more than the cost of the smartphone itself for software. The majority of 
+or more than the cost of the smartphone itself for software. The majority of
 the non-iPhone smartphones use a free OS, Android, which has the same
 capabilities of iPhone’s OS, iOS.
 
@@ -251,10 +251,10 @@ that ultimately, it won’t be possible for them to produce beneficial products.
 In an analogical way, a poet is not allowed to use a metaphor in his or her
 text because that figure of speech was already patented by another poet.
 
-Additionally, some PS companies may not even sell their products to some 
+Additionally, some PS companies may not even sell their products to some
 customers even if they want to buy. For example, Microsoft won’t sell any of
 their products to people living in Cuba, Iran, North Korea and Syria because of
-the government jurisdiction (“Exporting Microsoft Products FAQ”, 2018). And 
+the government jurisdiction (“Exporting Microsoft Products FAQ”, 2018). And
 this is a great discrimination against people living in these countries because
 companies as such use their economic power to become a monopoly. As a result,
 people living in discriminated countries have to use other alternatives of the

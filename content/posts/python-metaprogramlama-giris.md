@@ -51,12 +51,12 @@ Fakat  `5`  ‘i düşünelim, bu da bir nesne ve tipi `int` ama bu nesne
 çağrılabilir değil:
 
 ```python-repl
->>> int()  
-0  
->>> 5()  
-<stdin>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?  
-Traceback (most recent call last):  
-File "<stdin>", line 1, in <module>  
+>>> int()
+0
+>>> 5()
+<stdin>:1: SyntaxWarning: 'int' object is not callable; perhaps you missed a comma?
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
 TypeError: 'int' object is not callable
 ```
 
@@ -65,7 +65,7 @@ Bu bilgilerle birlikte, en ilkel tabiriyle, bir decorator argüman olarak bir
 
 _Hatta çoğu decorator çağrılabilen döner._
 
-> “Yahu Şuayip, sen int() deyince, aslında `int.__init__` ya da `int.__new__` 
+> “Yahu Şuayip, sen int() deyince, aslında `int.__init__` ya da `int.__new__`
 > çalışıyor, yani sen çağırma yapmıyorsun, aslında class initialize ediyorsun!”
 > diyebilirsiniz. Çağırabilme kavramı biraz daha karmaşık olabilir, o yüzden
 > bir  [C implementation’a](https://stackoverflow.com/a/115349/6063532)
@@ -190,7 +190,7 @@ metodu orijinal nesnenin imzasıyla aynı değilse metodun imzasını kaybedersi
 şeklinde çağırmanızda problem olmaz (ancak bu argümanlar orijinal metoda
 gidince hata çıkar, o sürece kadar giden tüm kodlar gereksiz çalışmış olur).
 
-Bu durumu düzeltmek için bir aracımız var, ne tesadüf ki bu araç da bir 
+Bu durumu düzeltmek için bir aracımız var, ne tesadüf ki bu araç da bir
 decorator. Şimdi bu decorator’un düzgün haline bakalım:
 
 ```python
@@ -219,7 +219,7 @@ def deco(func):
 
 `functools.wraps` decorate ettiği fonksiyonu, argüman olarak veren fonksiyona
 benzetmeye yarayan bir araç. Burada benzetme kelimesi önemli, zira decorate
-ettiğiniz nesne her zaman değişiyor; önemli olan bu nesnenin davranışının 
+ettiğiniz nesne her zaman değişiyor; önemli olan bu nesnenin davranışının
 olabildiğince aynı kalması. wraps, yukarıda bahsettiğim problemleri ve
 birkaçını daha çözüyor; bu metodu nesneyi değiştiren her decorator yazdığımızda
 kullanmalıyız.
@@ -332,7 +332,7 @@ class Person(metaclass=PersonMeta):
 
 Şimdi buradaki anahtar gözlemleri sıralayalım:
 
-1.  Metaclass type’in subclass’ı, zira type da bir metaclass. Metaclass 
+1.  Metaclass type’in subclass’ı, zira type da bir metaclass. Metaclass
 işlevselliği için bu subtyping’a ihtiyacımız var (zira arkada C ile dönen bir
 implementation var; oraya kadar inemiyoruz).
 2.  Buradaki `__new__` sıradan `__new__` ile aynı imzaya sahip değil, normalde
@@ -363,16 +363,16 @@ sonra descriptor kısmında bahsedeceğim `__set_name__` metotları.
 
 Metaclass’a başvurmanın en sık sebebi bir ‘kayıt etme’ işlevselliği oluşturmak.
 Django üzerinden bir örnek vereyim. Django’da model kavramı var ve bunlar
-özetle class tanımlarını database tablolarına çeviriyor. Bu aşamada Django 
+özetle class tanımlarını database tablolarına çeviriyor. Bu aşamada Django
 “acaba hangi class’lar model?” diye merak ediyor zira database tarafında
 tablolarını oluşturacak. Bu yüzden her Model classını inherit alan bir class
 oluşturduğumuzda Django bunu kayıt edecek bir mantığa ihtiyaç duyuyor.
 
-Bu aşamada demin aynı decorator’lar için uyguladığımız metodu uygulayıp, bu 
+Bu aşamada demin aynı decorator’lar için uyguladığımız metodu uygulayıp, bu
 sefer decorate etmek yerine classları bir listeye atan bir logic yazabilirdi.
 Bu sayede Model class’ini subtype etmiş tüm classların listesi elimizde olurdu.
 
-`__init_subclass__` metodu da tanımlandığı class’tan başka bir class 
+`__init_subclass__` metodu da tanımlandığı class’tan başka bir class
 **inherit edince** çalışan bir metot ve yukarıdaki senaryo için bire bir. Bir
 örnek vermem gerekirse:
 
@@ -440,7 +440,7 @@ Bu örnek güzel ama mesela şunları yapmak istesek nasıl yapardık acaba?
 
 1.  Eğer Person’a name atanacak ise, bu name en az 3 karakter olsun, değilse
 hata versin.
-2.  Eğer Person’un name’si belirlenmemiş ise, person.name diye çağırdığımız 
+2.  Eğer Person’un name’si belirlenmemiş ise, person.name diye çağırdığımız
 zaman “isim belirilmemiş” diye hata versin.
 3.  Person’a name atanınca Person’un eski isimleri bir listede tutulsun ve
 person.old_names şeklinde erişebilelim.

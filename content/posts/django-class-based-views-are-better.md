@@ -36,7 +36,7 @@ future-changes that might introduce some complexity.
 ## Generic views just don’t fit my purposes!
 
 If your logic is too complicated, and you can’t find a corresponding CBV
-you’re probably lying or doing something wrong. Just be realistic, at the end 
+you’re probably lying or doing something wrong. Just be realistic, at the end
 of the day you do one of these: create, read, update and delete, which all have
 corresponding views. Let’s say your point is fair and your logic indeed
 doesn’t fit into anything, then how come such complexity will be handled in a

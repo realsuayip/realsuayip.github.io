@@ -22,7 +22,7 @@ kaftan. Bu yapıyı her request bağlamına bir şeyler eklemek istediğimiz
 kullanıyoruz. Örneğin sitemizde kategoriler olsun ve sitenin header kısmında bu
 kategorileri listeleyelim. Bu durumda her request’te veri tabanından bu
 kategorileri çekmemiz gerekecek. Kategoriler de sık değişmeyen şeyler
-olduklarından hemen bunları ön belleğe almak istiyoruz, zira her request’te 
+olduklarından hemen bunları ön belleğe almak istiyoruz, zira her request’te
 veri tabanına fazladan bir istek atmak istemiyoruz, her ne kadar bu istek çok
 hızlı çalışsa da. Örnek bir context processor:
 
@@ -89,10 +89,10 @@ database olması gerekiyor, bunlardan en popüleri  [Redis](https://redis.io/).
 bu metodu birkaç farklı yerde birkaç kere kullanıyorsunuz, fakat bu durumda bu
 metot birkaç kere çalışacak ve ağır bir hesaplama yapılacaksa bu boş yere
 birden fazla kere yapılacak. Buradaki isteğimiz ilk hesaplanan değerin belleğe
-alınması ve takip eden çağrıların bu değeri kullanması. İşte bu durumda 
-[`cached_property`](https://docs.djangoproject.com/en/3.2/ref/utils/#django.utils.functional.cached_property) 
+alınması ve takip eden çağrıların bu değeri kullanması. İşte bu durumda
+[`cached_property`](https://docs.djangoproject.com/en/3.2/ref/utils/#django.utils.functional.cached_property)
 decorator’u biçilmiş kaftan, tam da bu dediğimizi yapıyor. Eğer bir property
-metodu değil de normal bir metodu bu yöntemle cache’ye almak isterseniz yine 
+metodu değil de normal bir metodu bu yöntemle cache’ye almak isterseniz yine
 Python standart kütüphanesinde bulunan `lru_cache` decorator’unu
 kullanabilirsiniz. Bu mekanizmalar için bir cache veri tabanına gerek yok, zira
 o anda bütün işlemler RAM’de gerçekleştiriliyor.
@@ -103,7 +103,7 @@ yapıldığı yerde yine muhtemelen LRU cache’ye ihtiyacınız var zira benzer
 
 İşte cache yapısını kullanmak bu kadar basit. İşin sonunda birkaç metot ve
 fonksiyon kullanarak uygulamanıza büyük bir hız avantajı kazandırabilirsiniz.
-Bu metotların çeşitliliği Django ile artıyor tabii, `cache` nesnesinin 
+Bu metotların çeşitliliği Django ile artıyor tabii, `cache` nesnesinin
 etrafında toparlanmış bir sürü [wrapper fonksiyonlar](https://docs.djangoproject.com/en/3.2/topics/cache/#template-fragment-caching)
 var ve örneğin view’lerinizi kolay bir şekilde cache etmenizi sağlıyor. Yine
 template’lerin içinde de  `cache`  tag’i kullanabiliyorsunuz. Son olarak, eğer
