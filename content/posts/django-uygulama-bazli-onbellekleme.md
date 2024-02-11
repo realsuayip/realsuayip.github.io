@@ -54,9 +54,9 @@ def categories(request):
 
 Öncelikle her cache bağlamında mantık şu şekilde işler:
 
-1.  Belirlenen anahtar cache veri tabanında kayıtlı mı diye bakılır.
-2.  Eğer kayıtlı ise (cache hit) bu kayıt döndürülür, yeni hesaplama yapılmaz.
-3.  Eğer kayıtlı değilse (cache miss) belirlenen anahtarla cache veri tabanına
+1. Belirlenen anahtar cache veri tabanında kayıtlı mı diye bakılır.
+2. Eğer kayıtlı ise (cache hit) bu kayıt döndürülür, yeni hesaplama yapılmaz.
+3. Eğer kayıtlı değilse (cache miss) belirlenen anahtarla cache veri tabanına
 yeni kayıt hesaplanarak eklenir.
 
 Örneğimizde  `cache_key`  hesaplanacak değerin bulunması için tutulan eşsiz bir

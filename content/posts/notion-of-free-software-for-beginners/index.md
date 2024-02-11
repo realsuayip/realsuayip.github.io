@@ -23,17 +23,18 @@ understand it easily.
 
 For those  _tech guys_  reading this, you may find several instances of
 non-valid assertions in this article (especially the explicit instances given),
-and you **are** right. Please don’t be too harsh on me (especially Apple users).
-**I’m trying to prove a point to a non-tech user**, you may as well take it for
-_the sake of example_.
+and you **are** right. Please don’t be too harsh on me (especially Apple
+users). **I’m trying to prove a point to a non-tech user**, you may as well
+take it for _the sake of example_.
 
-This article (or whatever you call it) is centered around  [Stallman](https://stallman.org/)’s
-_strict_  ideas. So if you don’t like him, you may not really like this
-article. I also admit, although I say that the article is based on his ideas,
-it is really based on my interpretation of his ideas, so you may find that in
-some cases I shrink or extend his ideas a bit. Today, I may not strictly
-advocate some of the concepts given in the text. So I admit it has some flaws,
-but I’m sure the message will be given and the notion will be fully understood.
+This article (or whatever you call it) is centered around
+[Stallman](https://stallman.org/)’s _strict_ ideas. So if you don’t like him,
+you may not really like this article. I also admit, although I say that the
+article is based on his ideas, it is really based on my interpretation of his
+ideas, so you may find that in some cases I shrink or extend his ideas a bit.
+Today, I may not strictly advocate some of the concepts given in the text. So I
+admit it has some flaws, but I’m sure the message will be given and the notion
+will be fully understood.
 
 If you find the article too exhaustive, you may instead watch this video where
 Stallman describes free software. The article more or the less explains the
@@ -61,7 +62,7 @@ enormous human effort and waste of time, and more advanced machines such as
 Lorenz cipher took place of Enigma, impelling computer scientists to research
 more advanced ways of automating computers to use them for decoding purposes.
 This eventually led to the production of world’s first programmable, electronic
-and digital computer (Hern, 2014).  Since then, computers have become
+and digital computer (Hern, 2014). Since then, computers have become
 programmable devices, meaning that they perform tasks in a systematic and
 hierarchical way, according to the specific variables and commands defined.
 
@@ -84,16 +85,17 @@ technologies to excel theirs. There were also a minority of people who released
 themselves from their companies for the cause of software development.
 
 In 1983, Richard Stallman founded the free software (FS) movement by launching
-the GNU Project[^1] (Stallman, 1983). The FS movement is a social movement which
-maintains the idea that software should be free for the better development of
-technologies, well-being of society, ease of usability and reliability.
-Advocates of proprietary software (PS) assert that software should be regarded
-as a product, each product should be sold for only one person, and the user of
-the software should be aware of the possible restrictions that may be enforced
-by the software company regarding use, distribution and modification of the
-program. Some of the well-known PS includes Microsoft Windows, Adobe Photoshop
-and Skype. On the contrary, FS philosophy encourages complete freedom.
-Linux[^2], WordPress, Mozilla Firefox and Moodle are examples of FS.
+the GNU Project[^1] (Stallman, 1983). The FS movement is a social movement
+which maintains the idea that software should be free for the better
+development of technologies, well-being of society, ease of usability and
+reliability. Advocates of proprietary software (PS) assert that software should
+be regarded as a product, each product should be sold for only one person, and
+the user of the software should be aware of the possible restrictions that may
+be enforced by the software company regarding use, distribution and
+modification of the program. Some of the well-known PS includes Microsoft
+Windows, Adobe Photoshop and Skype. On the contrary, FS philosophy encourages
+complete freedom. Linux[^2], WordPress, Mozilla Firefox and Moodle are examples
+of FS.
 
 When people think of PS, it is often thought that they only compose commercial
 high-end programs, but a proprietary program may be free regarding price. To
@@ -287,14 +289,14 @@ When programmers produce programs, they may make some design flaws, leading to
 the emergence of software bugs, which make programs behave in unintended or
 incorrect ways. When these kinds of bugs occur, they cause inconvenience for
 users, and if the bug is a major one, it may even damage the computer hardware.
-Software bugs can be exploited by crackers[^4], who are specialized in computers
-to obtain information or make a profit by exploiting weaknesses of computer
-systems. Acts of crackers may cause detrimental consequences. For example,
-they may exploit banking systems, and transfer money into their accounts
-illegally. They may also disable security cameras or alarm systems to help a
-heist. When these possibilities are considered, it can be concluded that it is
-vital for programmers to check their programs constantly for any potential
-errors.
+Software bugs can be exploited by crackers[^4], who are specialized in
+computers to obtain information or make a profit by exploiting weaknesses of
+computer systems. Acts of crackers may cause detrimental consequences. For
+example, they may exploit banking systems, and transfer money into their
+accounts illegally. They may also disable security cameras or alarm systems to
+help a heist. When these possibilities are considered, it can be concluded that
+it is vital for programmers to check their programs constantly for any
+potential errors.
 
 But programmers of PS are not always available to check their code because they
 usually don’t work on weekends and holidays. For example, if a major software
@@ -411,7 +413,7 @@ to the code; and it can’t be guaranteed that same mistakes will not be repeate
 by other PS companies; this is directly related to the role of FS in rapid
 development of technologies.
 
-----
+---
 
 In conclusion, it can be argued that there are five major benefits of
 promoting FS: it provides freedom by not interfering with users, it makes
@@ -432,51 +434,88 @@ computers and our life.
 
 ## References
 
-Arthur, C. (2014, September 1). Naked celebrity hack: security experts focus on iCloud backup theory. Retrieved from  [https://www.theguardian.com/technology/2014/sep/01/naked-celebrity-hack-icloud-backup-jennifer-lawrence](https://www.theguardian.com/technology/2014/sep/01/naked-celebrity-hack-icloud-backup-jennifer-lawrence)
+Arthur, C. (2014, September 1). Naked celebrity hack: security experts focus on
+iCloud backup theory. Retrieved from
+[https://www.theguardian.com/technology/2014/sep/01/naked-celebrity-hack-icloud-backup-jennifer-lawrence](https://www.theguardian.com/technology/2014/sep/01/naked-celebrity-hack-icloud-backup-jennifer-lawrence)
 
-Baraniuk, C. (2015, August 24). Ashley Madison: ‘Suicides’ over website hack. Retrieved from  [https://www.bbc.com/news/technology-34044506](https://www.bbc.com/news/technology-34044506)
+Baraniuk, C. (2015, August 24). Ashley Madison: ‘Suicides’ over website hack.
+Retrieved
+from [https://www.bbc.com/news/technology-34044506](https://www.bbc.com/news/technology-34044506)
 
-Chideya, F. (2015, July 21). Ashley Madison Breach: Why Am I Getting Their Emails? Retrieved from  [https://theintercept.com/2015/07/21/ashley-madison-breach-why-am-i-getting-their-emails/](https://theintercept.com/2015/07/21/ashley-madison-breach-why-am-i-getting-their-emails/)
+Chideya, F. (2015, July 21). Ashley Madison Breach: Why Am I Getting Their
+Emails? Retrieved from
+[https://theintercept.com/2015/07/21/ashley-madison-breach-why-am-i-getting-their-emails/](https://theintercept.com/2015/07/21/ashley-madison-breach-why-am-i-getting-their-emails/)
 
-Cluley, G. (2015, December 14). Ashley Madison blackmailers now sending threats via US postal system. Retrieved from  [https://www.grahamcluley.com/ashley-madison-blackmailers-sending-threats-postal/](https://www.grahamcluley.com/ashley-madison-blackmailers-sending-threats-postal/)
+Cluley, G. (2015, December 14). Ashley Madison blackmailers now sending threats
+via US postal system. Retrieved from
+[https://www.grahamcluley.com/ashley-madison-blackmailers-sending-threats-postal/](https://www.grahamcluley.com/ashley-madison-blackmailers-sending-threats-postal/)
 
 Edwards, H. S. (2018, April). The Masters of Mind Control.  _TIME_, 191, p. 33.
 
-Exporting Microsoft Products FAQ. (2018). Retrieved from  [https://www.microsoft.com/en-us/exporting/faq.aspx](https://www.microsoft.com/en-us/exporting/faq.aspx)
+Exporting Microsoft Products FAQ. (2018). Retrieved from
+[https://www.microsoft.com/en-us/exporting/faq.aspx](https://www.microsoft.com/en-us/exporting/faq.aspx)
 
-Ferguson, A. (2000). A History of Computer Programming Languages. Retrieved from  [https://cs.brown.edu/~adf/programming_languages.html](https://cs.brown.edu/~adf/programming_languages.html)
+Ferguson, A. (2000). A History of Computer Programming Languages. Retrieved
+from [https://cs.brown.edu/~adf/programming_languages.html](https://cs.brown.edu/~adf/programming_languages.html)
 
-Hern, A. (2014, November 14). How did the Enigma machine work? Retrieved from  [https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game](https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game)
+Hern, A. (2014, November 14). How did the Enigma machine work? Retrieved from
+[https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game](https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game)
 
-Hodges, A. (1995). Alan Turing — a short biography. Retrieved from  [https://www.turing.org.uk/publications/dnb.html](https://www.turing.org.uk/publications/dnb.html)
+Hodges, A. (1995). Alan Turing — a short biography. Retrieved from
+[https://www.turing.org.uk/publications/dnb.html](https://www.turing.org.uk/publications/dnb.html)
 
-Kielty, J. (2018, October 18). The most popular smartphones in 2018. Retrieved from  [https://deviceatlas.com/blog/most-popular-smartphones](https://deviceatlas.com/blog/most-popular-smartphones)
+Kielty, J. (2018, October 18). The most popular smartphones in 2018. Retrieved
+from [https://deviceatlas.com/blog/most-popular-smartphones](https://deviceatlas.com/blog/most-popular-smartphones)
 
-Kottasová, I. (2017, December 21). Apple: Yes, we’re slowing down older iPhones. Retrieved from  [https://money.cnn.com/2017/12/21/technology/apple-slows-down-old-iphones/index.html?iid=EL](https://money.cnn.com/2017/12/21/technology/apple-slows-down-old-iphones/index.html?iid=EL)
+Kottasová, I. (2017, December 21). Apple: Yes, we’re slowing down older
+iPhones. Retrieved from
+[https://money.cnn.com/2017/12/21/technology/apple-slows-down-old-iphones/index.html?iid=EL](https://money.cnn.com/2017/12/21/technology/apple-slows-down-old-iphones/index.html?iid=EL)
 
-Lewis, A. (2010, August 26). User-driven discontent. Retrieved from  [https://www.metafilter.com/95152/Userdriven-discontent#3256046](https://www.metafilter.com/95152/Userdriven-discontent#3256046)
+Lewis, A. (2010, August 26). User-driven discontent. Retrieved from
+[https://www.metafilter.com/95152/Userdriven-discontent#3256046](https://www.metafilter.com/95152/Userdriven-discontent#3256046)
 
-Malkin, G. (1996). Internet Users’ Glossary. Retrieved from  [https://tools.ietf.org/html/rfc1983](https://tools.ietf.org/html/rfc1983)
+Malkin, G. (1996). Internet Users’ Glossary. Retrieved from
+[https://tools.ietf.org/html/rfc1983](https://tools.ietf.org/html/rfc1983)
 
-Operating System Family / Linux. (2018). Retrieved from  [https://www.top500.org/statistics/details/osfam/1](https://www.top500.org/statistics/details/osfam/1)
+Operating System Family / Linux. (2018). Retrieved from
+[https://www.top500.org/statistics/details/osfam/1](https://www.top500.org/statistics/details/osfam/1)
 
-Plasencia, A. (2017).  _Is the Universe a Hologram? Scientists Answer the Most Provocative Questions (p. 249)_. Cambridge, MA: The MIT Press.
+Plasencia, A. (2017).  _Is the Universe a Hologram? Scientists Answer the Most
+Provocative Questions (p. 249)_. Cambridge, MA: The MIT Press.
 
-Stallman, R. (1983, September 27). Free Unix! Retrieved from  [https://www.gnu.org/gnu/initial-announcement.html](https://www.gnu.org/gnu/initial-announcement.html)
+Stallman, R. (1983, September 27). Free Unix! Retrieved from
+[https://www.gnu.org/gnu/initial-announcement.html](https://www.gnu.org/gnu/initial-announcement.html)
 
-Stallman, R. (1985). The GNU Manifesto. Retrieved from  [https://www.gnu.org/gnu/manifesto.en.html](https://www.gnu.org/gnu/manifesto.en.html)
+Stallman, R. (1985). The GNU Manifesto. Retrieved from
+[https://www.gnu.org/gnu/manifesto.en.html](https://www.gnu.org/gnu/manifesto.en.html)
 
-Stallman, R. (2018). What is free software? Retrieved from  [https://www.gnu.org/philosophy/free-sw.html.en](https://www.gnu.org/philosophy/free-sw.html.en)
+Stallman, R. (2018). What is free software? Retrieved from
+[https://www.gnu.org/philosophy/free-sw.html.en](https://www.gnu.org/philosophy/free-sw.html.en)
 
-Thomsen, S. (2015, Jul 20). Extramarital affair website Ashley Madison has been hacked and attackers are threatening to leak data online. Retrieved from  [https://www.businessinsider.com/cheating-affair-website-ashley-madison-hacked-user-data-leaked-2015-7](https://www.businessinsider.com/cheating-affair-website-ashley-madison-hacked-user-data-leaked-2015-7)
+Thomsen, S. (2015, Jul 20). Extramarital affair website Ashley Madison has been
+hacked and attackers are threatening to leak data online. Retrieved from
+[https://www.businessinsider.com/cheating-affair-website-ashley-madison-hacked-user-data-leaked-2015-7](https://www.businessinsider.com/cheating-affair-website-ashley-madison-hacked-user-data-leaked-2015-7)
 
-Whitney, L. (2014, May 27). How to get the Start menu back in Windows 8. Retrieved from  [https://www.cnet.com/how-to/how-to-get-the-start-menu-back-in-windows-8/](https://www.cnet.com/how-to/how-to-get-the-start-menu-back-in-windows-8/)
+Whitney, L. (2014, May 27). How to get the Start menu back in Windows 8.
+Retrieved from
+[https://www.cnet.com/how-to/how-to-get-the-start-menu-back-in-windows-8/](https://www.cnet.com/how-to/how-to-get-the-start-menu-back-in-windows-8/)
 
+[^1]: _GNU_  is a recursive acronym for “Gnu’s Not Unix”. A reference to Unix,
+which was a widely used closed source operating system at the time (Stallman,
+1985).
 
-[^1]: _GNU_  is a recursive acronym for “Gnu’s Not Unix”. A reference to Unix, which was a widely used closed source operating system at the time (Stallman, 1985).
+[^2]: Linux is a free operating system kernel, which is used to develop
+operating systems. The most famous operating system that utilize Linux is
+Android, which is used by most of the smartphones. Linux also accounts for most
+of the web servers and embedded devices. Today, world's 500 most powerful
+supercomputers run Linux (“Operating System Family / Linux”, 2018).
 
-[^2]: Linux is a free operating system kernel, which is used to develop operating systems. The most famous operating system that utilize Linux is Android, which is used by most of the smartphones. Linux also accounts for most of the web servers and embedded devices. Today, world's 500 most powerful supercomputers run Linux (“Operating System Family / Linux”, 2018).
+[^3]: Initially, Stallman listed three rules, but he felt the need of appending
+a new one (freedom 0). Because this freedom was more basic than the other
+three, it was decided that the new rule should precede others, as a result, it
+was named freedom 0 (Stallman, 2018).
 
-[^3]: Initially, Stallman listed three rules, but he felt the need of appending a new one (freedom 0). Because this freedom was more basic than the other three, it was decided that the new rule should precede others, as a result, it was named freedom 0 (Stallman, 2018).
-
-[^4]: Crackers are commonly known as ‘hackers’ in colloquial language, but in fact a hacker is a person who is interested in internal workings of computer systems. Any person who is delighted to study and understand computer systems can be called hacker, but not a cracker (Malkin, 1996).
+[^4]: Crackers are commonly known as ‘hackers’ in colloquial language, but in
+fact a hacker is a person who is interested in internal workings of computer
+systems. Any person who is delighted to study and understand computer systems
+can be called hacker, but not a cracker (Malkin, 1996).

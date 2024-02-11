@@ -85,7 +85,7 @@ Bu örnek decorator, decorate ettiği çağrılabilir nesneyi her decorate
 ettiğimizde decorate ettiğimiz şeyi yazdırıyor. Tabii bu pek yararlı değil zira
 genelde biz nesnenin çağırdığı senaryodaki işlevselliğini değiştirmek isteriz.
 
-Yine de bazen programın ilk çalışma anında  decorate edilen nesnelerin
+Yine de bazen programın ilk çalışma anında decorate edilen nesnelerin
 davranışını değiştirmek için bu yapıyı kullanabiliriz. Mesela bir class’i
 decorate ettiğimizi düşünelim, bu yapıyı kullanarak class’ın kendisine ait bazı
 metotları ve attribute’ları değiştirebiliriz. Ya da daha uçuk kaçık bir şey
@@ -270,16 +270,17 @@ demiştik; **class’lar de bir nesnedir ve `type`'ın subclass’ı olurlar.**
 
 Bir type oluşturulduğunda birkaç karakteristik özelliği olur:
 
-1.  İsmi ne?
-2.  Hangi base classları almış, yani neyi inherit etmiş?
-3.  Class attribute’leri neler, yani class gövdesinde hangi tanımlar yapılmış?
+1. İsmi ne?
+2. Hangi base classları almış, yani neyi inherit etmiş?
+3. Class attribute’leri neler, yani class gövdesinde hangi tanımlar yapılmış?
 
 Ancak bu üç bilgi elimizde ise, bir type oluşturabiliriz. Peki nasıl ya da ne
 kullanarak type oluşturabiliriz? Metaclass kullanarak.
 
 Bir class’ın davranışını belirleyen classlara ‘metaclass’ denir; bu
 davranışlardan biri de oluşturulma şeklidir. Eğer bir metaclass belirtmezseniz,
-oluşturduğunuz tüm type’lar ‘type’ metaclass’i ile oluşturulur, yani şu şekilde:
+oluşturduğunuz tüm type’lar ‘type’ metaclass’i ile oluşturulur, yani şu
+şekilde:
 
 ```python
 def __init__(self, name):
@@ -293,10 +294,10 @@ ismet = Person(name="İsmet")
 Buradaki argüman’lar yukarıda belirttiğim karakteristik özelliklere denk
 geliyorlar. Sonuç olarak anlamamız gereken şunlar:
 
-1.  Her class aslında type’ın bir subtype’ıdır.
-2.  Type’ları oluşturmanın tek yolu, class syntax’ı değil.
-3.  Type’ların oluşturulmasını (ve diğer davranışlarını) değiştiren veya
-kontrol eden özel type’lar var.
+1. Her class aslında type’ın bir subtype’ıdır.
+2. Type’ları oluşturmanın tek yolu, class syntax’ı değil.
+3. Type’ların oluşturulmasını (ve diğer davranışlarını) değiştiren veya
+   kontrol eden özel type’lar var.
 
 ## Metaclass kavramı
 
@@ -309,7 +310,11 @@ kullanımı günlük programlama rutinimiz için çok ileri bir çözüm. Genel 
 de, kodun karmaşıklığını çoğaltmamak için metaclass yazılmaması yönünde.
 
 Şimdi sizin için bir metaclass kullanma bahanesi üreteceğim. Diyelim ki
-yukarıda öğrendiğimiz decorator bilgileriyle çok güzel bir class decorator’u yazdık (bu decorator’un ne yaptığı önemli değil). Fakat bu decorator’u gidip 50 tane class’in üstüne decorate etmemiz gerektiğini fark ettik, tabii canımız çok sıkıldı; çok fazla kod tekrarı yapacağız. İleride bu decorator’un bir argümanınını değiştirmek istersek vay halimize!
+yukarıda öğrendiğimiz decorator bilgileriyle çok güzel bir class decorator’u
+yazdık (bu decorator’un ne yaptığı önemli değil). Fakat bu decorator’u gidip 50
+tane class’in üstüne decorate etmemiz gerektiğini fark ettik, tabii canımız çok
+sıkıldı; çok fazla kod tekrarı yapacağız. İleride bu decorator’un bir
+argümanınını değiştirmek istersek vay halimize!
 
 Metaclass bu bağlamda bir çözüm sağlayabilir. Bu classların base classına özel
 bir metaclass uydurup, classın oluşturulma aşamasında class’ı decorate
@@ -329,25 +334,24 @@ class Person(metaclass=PersonMeta):
         self.name = name
 ```
 
-
 Şimdi buradaki anahtar gözlemleri sıralayalım:
 
-1.  Metaclass type’in subclass’ı, zira type da bir metaclass. Metaclass
-işlevselliği için bu subtyping’a ihtiyacımız var (zira arkada C ile dönen bir
-implementation var; oraya kadar inemiyoruz).
-2.  Buradaki `__new__` sıradan `__new__` ile aynı imzaya sahip değil, normalde
-`__new__`, `__init__`’den önce çalışır ve **instance’yi oluşturmakla**
-görevlidir. Oysa burda **class’ın kendisini oluşturmakla** görevli.
-3.  `__new__`’in imzası `type()`’nın 3 argüman alan imzasıyla aynı, yani
-yukarıda bahsettiğimiz üç karakteristik.
-4.  Bir class’ın metaclass’ını belirtmek için, class tanımında metaclass
-keyword argümanı kullanılır.
-5.  `__new__` içindeki oluşturma mekanizması için yine type’a başvuruyoruz
-(super yoluyla; burada açık açık `cls = type(name, bases, classdict)` da
-diyebilirdik, ama yaygın kullanım super’i çağırmaktır). Demek ki type
-oluşumuna müdahele etmek aslında o kadar karmaşık bir işlem değil. Ya bu üç
-karakteristiği değiştireceğiz ya da yeni oluşturulan type nesnesi üzerinde
-birtakım işlemler yapacağız.
+1. Metaclass type’in subclass’ı, zira type da bir metaclass. Metaclass
+   işlevselliği için bu subtyping’a ihtiyacımız var (zira arkada C ile dönen
+   bir implementation var; oraya kadar inemiyoruz).
+2. Buradaki `__new__` sıradan `__new__` ile aynı imzaya sahip değil, normalde
+   `__new__`, `__init__`’den önce çalışır ve **instance’yi oluşturmakla**
+   görevlidir. Oysa burda **class’ın kendisini oluşturmakla** görevli.
+3. `__new__`’in imzası `type()`’nın 3 argüman alan imzasıyla aynı, yani
+   yukarıda bahsettiğimiz üç karakteristik.
+4. Bir class’ın metaclass’ını belirtmek için, class tanımında metaclass
+   keyword argümanı kullanılır.
+5. `__new__` içindeki oluşturma mekanizması için yine type’a başvuruyoruz
+   (super yoluyla; burada açık açık `cls = type(name, bases, classdict)` da
+   diyebilirdik, ama yaygın kullanım super’i çağırmaktır). Demek ki type
+   oluşumuna müdahele etmek aslında o kadar karmaşık bir işlem değil. Ya bu üç
+   karakteristiği değiştireceğiz ya da yeni oluşturulan type nesnesi üzerinde
+   birtakım işlemler yapacağız.
 
 Yani görünen o ki yukarıdaki verdiğim basit template ile `__new__` gövdesinde
 birtakım özelleştirmeler ile type oluşumunu değiştiren bir metaclass
@@ -438,12 +442,12 @@ person.name = "İsmet"
 
 Bu örnek güzel ama mesela şunları yapmak istesek nasıl yapardık acaba?
 
-1.  Eğer Person’a name atanacak ise, bu name en az 3 karakter olsun, değilse
-hata versin.
-2.  Eğer Person’un name’si belirlenmemiş ise, person.name diye çağırdığımız
-zaman “isim belirilmemiş” diye hata versin.
-3.  Person’a name atanınca Person’un eski isimleri bir listede tutulsun ve
-person.old_names şeklinde erişebilelim.
+1. Eğer Person’a name atanacak ise, bu name en az 3 karakter olsun, değilse
+   hata versin.
+2. Eğer Person’un name’si belirlenmemiş ise, person.name diye çağırdığımız
+   zaman “isim belirilmemiş” diye hata versin.
+3. Person’a name atanınca Person’un eski isimleri bir listede tutulsun ve
+   person.old_names şeklinde erişebilelim.
 
 Şimdi biraz beyin jimnastiği yaparsanız ve kendinizi çok kasarsanız bunların
 işlevselliğin hepsini oldukça karmaşık metaclass yapısıyla bir şekilde
@@ -481,13 +485,13 @@ class Person:
 kurulduğunu `__set__` ve `__get__` metotlarını sindirdikten sonra
 anlayabiliriz. Şimdi birkaç çıkarım/tanımlama yapalım:
 
-1.  Descriptor’lar class gövdesinde initialize edilir. Her descriptor kendi
-başına bir class’dır.
-2.  `__set__` metodu attribute değişiminde çağrılır, yani özetle erişimi bir
-metot ile sarmış oluyoruz. Benzer bir şekilde bu durum `__get__` için de
-geçerli, bu metot da erişim zamanında çağrılır.
-3.  Eğer bir class `__get__`, `__set__` ya da `__delete__` tanımı yapıyorsa,
-bir descriptor olur.
+1. Descriptor’lar class gövdesinde initialize edilir. Her descriptor kendi
+   başına bir class’dır.
+2. `__set__` metodu attribute değişiminde çağrılır, yani özetle erişimi bir
+   metot ile sarmış oluyoruz. Benzer bir şekilde bu durum `__get__` için de
+   geçerli, bu metot da erişim zamanında çağrılır.
+3. Eğer bir class `__get__`, `__set__` ya da `__delete__` tanımı yapıyorsa,
+   bir descriptor olur.
 
 Sonuç olarak descriptor’lar “nokta” ile yapılan işlemleri bir metoda sararak
 dinamik erişim ve değişim özellikleri sunuyor. Bu metotların kullanımını
@@ -514,7 +518,9 @@ veya bilgiyi çekerken kolon ismini nasıl biliyor? Yani şu query’i yapabilme
 için “name”nin bir yerden gelmesi lazım:
 
 ```sql
-SELECT name FROM users WHERE user.id = 1
+SELECT name
+FROM users
+WHERE user.id = 1
 ```
 
 Burada da imdadımıza `__set_name__` yetişiyor. Bu metot bize descriptor’un
@@ -564,15 +570,15 @@ bir argüman alabiliyor bu da database bağlamında `VARCHAR` boyutunu belirliyo
 
 Sonuç olarak descriptor’lardan anlamamız gereken şunlar:
 
-1.  Bir class’ın attribute erişimini ve değişimini kontrol eden mekanizmalara
-descriptor diyoruz ve bu işlemler sırayla `__get__` ve `__set__` metotlarına
-denk geliyor.
-2.  Descriptor’lar özellikle data validation veya dinamik data erişimi için
-işimize yarıyor.
-3.  Descriptor’lar argüman alabiliyorlar ve `__set_name__` metoduyla bir
-descriptor’un nasıl isimlendirildiğini öğrenebiliyoruz.
-4.  Descriptor’lar sadece class variable olarak tanımlandıkları zaman
-çalışırlar.
+1. Bir class’ın attribute erişimini ve değişimini kontrol eden mekanizmalara
+   descriptor diyoruz ve bu işlemler sırayla `__get__` ve `__set__` metotlarına
+   denk geliyor.
+2. Descriptor’lar özellikle data validation veya dinamik data erişimi için
+   işimize yarıyor.
+3. Descriptor’lar argüman alabiliyorlar ve `__set_name__` metoduyla bir
+   descriptor’un nasıl isimlendirildiğini öğrenebiliyoruz.
+4. Descriptor’lar sadece class variable olarak tanımlandıkları zaman
+   çalışırlar.
 
 Son olarak Python’daki classmethod, staticmethod ve property gibi decorator’lar
 de descriptor yöntemiyle çalışıyorlar. Örneğin class’daki bir metodu property

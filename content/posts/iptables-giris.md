@@ -183,7 +183,8 @@ güvenlik sertifikası olmayan sitelere erişemezdik.
 DoS ataklarını engellemek için kullanılabilir:
 
 ```shell
-iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -m limit\
+         --limit 25/minute --limit-burst 100 -j ACCEPT
 ```
 
 Yukarıda gördüğünüz kuralda `-m` parametresi kullanılmış. Bu parametre bir

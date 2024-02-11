@@ -26,14 +26,14 @@ on that much. I am also pretty sure everyone will acknowledge that CBV are
 Here are some common assertions made to justify function-based usage, I have
 provided my responses below.
 
-## My logic is so simple!
+## My logic is so simple
 
 If your logic is simple, you better use the most primitive base class `View`.
 It’s just a plain wrapper that provides get and post methods. You would be more
 consistent if the remaining views were CBV, you would worry less about
 future-changes that might introduce some complexity.
 
-## Generic views just don’t fit my purposes!
+## Generic views just don’t fit my purposes
 
 If your logic is too complicated, and you can’t find a corresponding CBV
 you’re probably lying or doing something wrong. Just be realistic, at the end
@@ -51,7 +51,7 @@ function-based views. But you don’t really count the amount of lines you save
 up, do you? Let’s say you did and CBV still had longer lines. Then what? It’s
 a good compromise; CBV promotes scalability and readability.
 
-## Class based views are too complicated!
+## Class based views are too complicated
 
 CBV are not complicated, they are complex. It requires a good understanding of
 object-oriented paradigm and that’s why being able to use them makes you a
@@ -59,7 +59,7 @@ better Django developer. If you understand CBV, you will understand views that
 make use of it; if you continue using function-based views, you will be writing
 _complicated_ views that even you won’t understand some three months later.
 
-## All the logic is hidden, I don’t understand anything!
+## All the logic is hidden, I don’t understand anything
 
 All the logic is indeed hidden and that’s one of the things we actually want;
 we want to reach  **business logic**  as soon as possible and anything
