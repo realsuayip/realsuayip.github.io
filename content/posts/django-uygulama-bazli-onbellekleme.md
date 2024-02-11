@@ -59,7 +59,7 @@ def categories(request):
 3. Eğer kayıtlı değilse (cache miss) belirlenen anahtarla cache veri tabanına
    yeni kayıt hesaplanarak eklenir.
 
-Örneğimizde  `cache_key`  hesaplanacak değerin bulunması için tutulan eşsiz bir
+Örneğimizde `cache_key` hesaplanacak değerin bulunması için tutulan eşsiz bir
 anahtar, bu anahtar sayesinde cache veri tabanına erişeceğiz. Yukarıda
 anlattığım adımları `cache` nesnesini kullanarak `set` ve `get` metotlarıyla
 basit bir şekilde gerçekleştirdim. Queryset’ler cache edildiği anda
@@ -107,7 +107,7 @@ Bu metotların çeşitliliği Django ile artıyor tabii, `cache` nesnesinin
 etrafında toparlanmış bir sürü
 [wrapper fonksiyonlar](https://docs.djangoproject.com/en/3.2/topics/cache/#template-fragment-caching)
 var ve örneğin view’lerinizi kolay bir şekilde cache etmenizi sağlıyor. Yine
-template’lerin içinde de  `cache`  tag’i kullanabiliyorsunuz. Son olarak, eğer
+template’lerin içinde de `cache` tag’i kullanabiliyorsunuz. Son olarak, eğer
 sürekli `cache` nesnesi ile uğraşmak istemiyorsanız ve Django’nun sunduğu
 wrapper’ler de pek işinize yaramıyorsa bu bahsettiğim 3 adımlık senaryoyu
 gerçekleştiren bir decorator yazdım, ona da

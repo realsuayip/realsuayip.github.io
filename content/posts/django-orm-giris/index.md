@@ -100,7 +100,7 @@ veri tabanına sokmak gayet mümkün.
 
 > Yazı tabanlı field’lere (örneğin TextField, CharField ve EmailField gibi)
 > **null** argümanı `False` olmalı (varsayılan hali böyledir). Aksi takdirde bu
-> field’lerin boş değerleri için iki seçenek çıkıyor  `NULL` ve `""`
+> field’lerin boş değerleri için iki seçenek çıkıyor `NULL` ve `""`
 > (boş string). Aynı şeyi ifade etmek için veri tabanında iki farklı değer
 > tutulması istemediğimiz bir durum; bunun yüzünden ileride can sıkıcı
 > hadiseler meydana gelmesini istemeyiz.
@@ -117,8 +117,8 @@ b) Şarkıları sahipsiz bırakıp, şarkı ve artist eşleşmesi yapan üçünc
 oluşturabiliriz.
 
 Muhtemelen çoğu kişi ilk senaryoyu daha mantıklı bulacaktır. İşte bu senaryo
-için  `ForeignKey` kullanıyoruz; yani sahiplerin önem arz ettiği durumlar.
-İkinci senaryoyu uygun görseydik  `ManyToManyField` (m2m) kullanırdık; yani
+için `ForeignKey` kullanıyoruz; yani sahiplerin önem arz ettiği durumlar.
+İkinci senaryoyu uygun görseydik `ManyToManyField` (m2m) kullanırdık; yani
 sahiplerin önemsiz olduğu durumlar. m2m yapısını çoğunlukla herkesin/her şeyin
 sahip olabileceği durumlarda kullanıyoruz, mesela bir şarkıya ancak bir artist
 sahip olabilir fakat o şarkının spesifik bir oynatma listesine ait olmasına
@@ -149,7 +149,7 @@ artist_obj.song_set.all()
 
 Peki bu `song_set` neyin nesi? Biliyorsunuz ki her şarkının bir artisti var.
 Django varsayılan davranışında ters ilişkiyi isimlendirmek için bu kaynak
-modelin ismini alıyor ve sonuna  `_set`  ekliyor. Bu isimlendirme biçimi benim
+modelin ismini alıyor ve sonuna `_set` ekliyor. Bu isimlendirme biçimi benim
 hoşuma gitmiyor ve genelde o modelin çoğul hali olarak değiştiriyorum, bu
 senaryoda `songs` yapardım mesela (bu değişiklik field’de **related_name**
 argümanı ile yapılıyor). Bu durumda `artist.songs.all()` hakikaten çok
@@ -162,11 +162,11 @@ Song.objects.filter(artist=artist_obj).all()
 
 > Ters ilişkilere isim verin, unutmayın ve kullanın.
 
-Ek olarak bire bir ilişkiler için  `OneToOneField`  var. Her ne zaman bir
+Ek olarak bire bir ilişkiler için `OneToOneField` var. Her ne zaman bir
 model instance’ın bir başka model instance ile (ve bu ilişki eşsiz olmalı)
 eşleşmesi gerekiyorsa bu yapıyı kullanmamız gerekiyor. Örneğin şarkımızın bir
 müzik videosu olsaydı (bu video için de bir model gerektiğini varsayalım),
-böyle bir yapı kullanabilirdik. Bu yapıya aynı zamanda  `ForeignKey` ile,
+böyle bir yapı kullanabilirdik. Bu yapıya aynı zamanda `ForeignKey` ile,
 **unique** argümanına `True` vererek ulaşabiliyoruz. Fakat `OneToOneField`
 ek olarak ters ilişki kullanıldığı zaman direkt model instance veriyor
 (`ForeignKey`’de tek elemanlı `QuerySet`).
@@ -182,7 +182,7 @@ argümanını `False` olarak değiştirmeniz gerek.
 
 İlişkisel field’lerin ve ters ilişkilerin isimlendirilmesi yine önemli bir
 detay. Örneğin m2m field’lerı için çoğul yapılar kullanmakta fayda var. Yine
-yapılan hatalardan biri bu field’lerin isimlerine  `_id`  takısı eklemek;
+yapılan hatalardan biri bu field’lerin isimlerine `_id` takısı eklemek;
 yapmayın.
 
 ## Modellerin metotları
@@ -212,7 +212,7 @@ class Artist(models.Model):
         return "Artist: %s %s" % (self.name, self.surname)
 ```
 
-Bu uygulamadan sonra  `artist.full_name`  şeklinde bir yapıyı kullanarak
+Bu uygulamadan sonra `artist.full_name` şeklinde bir yapıyı kullanarak
 artistin ad ve soy ad bilgisine erişebiliyoruz. Burada kullandığım `property`
 built-in fonksiyon da önem arz ediyor, eğer yazdığınız metodun bir field gibi
 , yani bir nitelik gibi erişilebilir olmasını istiyorsanız bu fonksiyonu
@@ -223,8 +223,8 @@ karar verebilirsiniz.
 > Bazen bu özel property’leri oluştururken veri tabanına maliyetli bir takım
 > (modelin kendi field’lerinden bağımsız da olabilir) çağrılar yapabiliyoruz.
 > Böyle bir senaryoda her niteliğe erişimimizde bu çağrı tekrar yapılıyor; bu
-> da gereksiz yavaşlığa sebep oluyor. Bunun önüne geçmek için  `property`
-> yerine Django’nun bize sunduğu  `cached_property`  fonksiyonunu kullanmamız
+> da gereksiz yavaşlığa sebep oluyor. Bunun önüne geçmek için `property`
+> yerine Django’nun bize sunduğu `cached_property` fonksiyonunu kullanmamız
 > gerek. Bu sayede sonraki her çağırışta ilk çağrıda alınan değer kullanılıyor.
 
 Kendinizin tanımladığı metotlar dışında bazı özel metotlar da var. Bunlardan
@@ -238,7 +238,7 @@ bu kalıbı takip etmesi.
 önce veya sonra yapılmasını istediğimiz şeyler için kullanıyoruz (override
 ediyoruz). Örneğin diğer field’lere bağlı olarak otomatik bir şekilde oluşacak
 bir field’imiz var ise, burada onun değerini belirlemek akıllıca olacaktır.
-Özellikle  `save`  metodunu kullanarak bir çeşit validation yapmak isteğiniz
+Özellikle `save` metodunu kullanarak bir çeşit validation yapmak isteğiniz
 olabilir, ama kesin tavsiyem işi buraya bırakmamanız ve request handling
 kısmında bitirmeniz. Bir de, Django sinyallerde de benzer bir özellik sunuyor;
 hangisinin hangi durumda daha kullanışlı olacağını sinyalleri konuşurken
@@ -267,13 +267,13 @@ bunun ileride değişeceği öngörülmüyor ise) `View`‘da yazılmalı.
 
 Bu konular üstünde fazla durmak istemiyorum zira bunlar söz dizimi ezberleme
 meselesi ve sorgularda olduğu kadar fazla içgörü gerektirmiyor. Model sınıfını
-kullanarak hemen bir instance oluşturabiliyoruz, mesela  `Artist(name="Rick")`.
+kullanarak hemen bir instance oluşturabiliyoruz, mesela `Artist(name="Rick")`.
 Bunu bir de veri tabanına işlememiz gerekiyor ki burada zaten tanıştığımız
 `save` metodunu kullanabiliriz. Yine varsayılan manager’da `create` adlı bir
 metot da mevcut. Güncelleme yapmak için elimizde olan instance’ın niteliklerini
 (field’lere mahsus) normal bir Python nesnesinin niteliklerini değiştirir gibi
 değiştirip daha sonra `save` metodunu çağırmak suretiyle yapıyoruz. Silme
-işlemi için de yine bahsettiğimiz  `delete`metodu hazırda bekliyor. CUD
+işlemi için de yine bahsettiğimiz `delete` metodu hazırda bekliyor. CUD
 işlemlerinin hepsi için toplu (bulk) işlemler de mevcut, yani her zaman
 instance’lar üzerinde çalışmak zorunda da değilsiniz; bunları yine `QuerySet`
 api’sinde bulmak mümkün.
@@ -288,7 +288,7 @@ api’sinde bulmak mümkün.
 
 `save` ile ilgili bir diğer ayrıntı da, güncellenecek olan field’in
 instance’ın kendi field’ine bağlı olduğu durumlarda ortaya çıkıyor. Örneğin bir
-artistin şarkı sayısını belirten bir  `IntegerField`  olsun. Bir yerde bu şarkı
+artistin şarkı sayısını belirten bir `IntegerField` olsun. Bir yerde bu şarkı
 sayısını bir arttırmamız gerektiğini farz edelim, bu durumda şöyle bir yanlış
 sıkça yapılıyor:
 
@@ -309,18 +309,18 @@ artist.song_count = F("song_count") + 1
 artist.save(update_fields=["song_count"])
 ```
 
-`F`  Django’da temel ve önemli ifadelerden biri. Bu ifadeyle ilgili daha
+`F` Django’da temel ve önemli ifadelerden biri. Bu ifadeyle ilgili daha
 detaylı bir tarifi ileride yapacağız. Buradaki görevi güncelleme yapacak veri
 tabanı sorgusunu hazırlamak, yani `+=1` ifadesini bağıl field’e de işaret
 ederek SQL’da mantıklı bir biçime çevirmek.
 
-> Veri tabanında karşılığı olmayan bir instance’ın pk’si  `None`  olur. Eğer bu
+> Veri tabanında karşılığı olmayan bir instance’ın pk’si `None` olur. Eğer bu
 > ayrıma ihtiyacınız varsa bu niteliğe bakabilirsiniz; bu özellikle oluşturma
 > sırasında tek seferlik işlemler yapacağınız zaman işinize yarar ve `save`
 > metodunda kullanımı yaygındır (tabii ki super çağrılmadan önce).
 
 Bildiğiniz üzere Django’da CUD işlemlerini neredeyse her zaman `Form` api’si
-(veya bunun türevleri) üzerinden hallediyoruz.  `Form`  kullanmadığınız bir
+(veya bunun türevleri) üzerinden hallediyoruz. `Form` kullanmadığınız bir
 bağlamda alışkanlıktan dolayı doğrulama işlemlerini (validation) es geçmeye
 meyilli olabilirsiniz. Veri tabanında olsun, olmasın bir instance’ın valid
 olup olmadığı `full_clean` metodunu çağırarak anlayabilirsiniz. Eğer garantici
@@ -344,7 +344,7 @@ durumda tek bir şarkı eklendiğinde o şarkı için otomatik bir albüm oluşt
 mekanizmayı sinyaller yoluyla kurabiliriz. Bu sayede tek bir şarkı ekleme
 isteği için kullanıcı daha az bir çaba sarf etmiş olur.
 
-Peki,  `save`  ve  `delete`  model metotlarından daha önce bahsetmiştik.
+Peki, `save` ve `delete` model metotlarından daha önce bahsetmiştik.
 Bunlara denk gelen sinyaller de mevcut, hangisini kullanacağız? Bu da yine
 tartışmalı konulardan, fakat büyük oranda uzlaşma şu yönde: eğer yapılacak
 işlem sadece model instace’in kendisini etkiliyorsa model metotları, aksi halde
@@ -353,22 +353,22 @@ işlem sadece model instace’in kendisini etkiliyorsa model metotları, aksi ha
 ## Sorgular
 
 Django’da sorgu yapmak için metot zincirlemesi yapılıyor. Bu zincirin her
-halkası da bir  `QuerySet`  tipinde bir nesne aslında. En basitinden belirli
+halkası da bir `QuerySet` tipinde bir nesne aslında. En basitinden belirli
 modele ait tüm kayıtları listelemek için şu şekilde bir yapı kullanıyoruz:
 
 ```python
 Artist.objects.all()
 ```
 
-Çok kafa karıştırıcı değil, fakat  `objects`  niteliği biraz kafamızı
-karıştırabilir. Neden  `Artist.all()`değil mesela? Daha önceden manager’ların
-varlığından bahsetmiştik. İşte  `objects` de Django’nun bize verdiği
+Çok kafa karıştırıcı değil, fakat `objects` niteliği biraz kafamızı
+karıştırabilir. Neden `Artist.all()` değil mesela? Daha önceden manager’ların
+varlığından bahsetmiştik. İşte `objects` de Django’nun bize verdiği
 varsayılan bir manager. İleride de kendi manager’larımızı oluştururken bu
 sınıftan miras alarak yapacağız ki Django’nun sunduğu pek çok özelliği
 kullanabilelim.
 
-Yukarıdaki sorgudan sonra elde edeceğimiz  `QuerySet`  nesnesi içinde artist
-modeline ait model instance’lar olacak;  `QuerySet`  de iterable bir nesne,
+Yukarıdaki sorgudan sonra elde edeceğimiz `QuerySet` nesnesi içinde artist
+modeline ait model instance’lar olacak; `QuerySet` de iterable bir nesne,
 yani bir for döngüsü kullanarak her bir instance’a erişebilir, yukarıda
 bahsettiğimiz yöntemleri uygulayabilirsiniz.
 
@@ -396,7 +396,7 @@ bir davranış, bunu önlemek için bir `lookup` kullanmamız gerek:
 Artist.objects.filter(surname__iexact="Astley")
 ```
 
-`iexact`  lookup’ı büyük-küçük harf ayrımını göz ardı ederek aynı değere sahip
+`iexact` lookup’ı büyük-küçük harf ayrımını göz ardı ederek aynı değere sahip
 mi diye bakıyor. Lookup’lar için genel söz dizimi şu şekilde:
 
 ```python
@@ -421,8 +421,8 @@ Artist.objects.filter(surname__iexact="astley").exclude(name__iexact="rick")
 ```
 
 `filter` ve `exclude` metotlarını tekrar tekrar zincirlememekte fayda var,
-zira her zincirleyişimizde  `QuerySet`  nesnesi “klonlanıyor”, bu da
-performansa etki ediyor. Aynı zamanda  `filter`  zincirlemesi ile ilgili meşhur
+zira her zincirleyişimizde `QuerySet` nesnesi “klonlanıyor”, bu da
+performansa etki ediyor. Aynı zamanda `filter` zincirlemesi ile ilgili meşhur
 da bir  _problemimiz_ var: Bu metodu zincirlemek ile metot içine çok sayıda
 argüman göndermek arasında ne fark var? Örneğin şu iki sorguya bakalım:
 
@@ -474,7 +474,7 @@ Verilen durumda pek mantıklı bir kullanım değil elbette. Fakat ileride daha
 esnek yapılara ihtiyacınız olacağından, bu özelliği göz önünde bulundurmak
 önemli.
 
-`QuerySet`  nesnesinin pek çok metodu var, bunların her birine tek tek
+`QuerySet` nesnesinin pek çok metodu var, bunların her birine tek tek
 değinmeyeceğim; bunlar şimdilik en önemli olanlarıydı. Bu metotları
 [Django dokümantasyonunda çarşaf çarşaf listelenmiş](https://docs.djangoproject.com/en/3.2/ref/models/querysets/#queryset-api)
 olarak bulabilirsiniz. Her birine bakıp ne işe yaradığına, nasıl
@@ -483,25 +483,25 @@ kullanıldığına bakmakta kesin fayda var.
 ## QuerySet’lerin “tembelliği”
 
 Django’da `QuerySet`‘ler yazıldığı anda veri tabanına istek göndermezler.
-`QuerySet`‘lerin veri tabanına istek attığı durumda bir bu  `QuerySet`
+`QuerySet`‘lerin veri tabanına istek attığı durumda bir bu `QuerySet`
 _evaluate_ edilmiş oluyor. Şimdi hangi durumlarda bunun gerçekleştiğini
 görelim. Bu çözümlenme işlemini kullanıcıya bilgi göstereceğimiz son ana kadar
 sarkıtmak istiyoruz, zira bellekte oradan buraya boş yere büyük bir Python
 listesi (ya da tuple, ne severseniz) taşımanın bir manası yok. Buna ek olarak
-aynı  `QuerySet`  nesnesini birden defa çözümlemek istemeyiz (ki yine Django
+aynı `QuerySet` nesnesini birden defa çözümlemek istemeyiz (ki yine Django
 bunu engellemek için bir takım cache nitelikleri de geliştirmiş).
 
 İşte şu durumlarda çözümlenme gerçekleşiyor:
 
-a) Iteration yapıldığı zaman. Örneğin  `QuerySet`  nesnesini for loop
+a) Iteration yapıldığı zaman. Örneğin `QuerySet` nesnesini for loop
 kullanarak gezerseniz, for loop’un başladığı satırda çözümlenecektir.
-b) list, tuple, len, bool, repr gibi metotları  `QuerySet`  üzerinde
-kullanıldığı zaman.  `len`  ve  `bool`  özellikle parantez gerektiren
+b) list, tuple, len, bool, repr gibi metotları `QuerySet` üzerinde
+kullanıldığı zaman. `len` ve `bool` özellikle parantez gerektiren
 kullanımlar.
 
-> Eğer bir  `QuerySet`  nesnesinde kaç instance var merak ediyorsanız, bunu
+> Eğer bir `QuerySet` nesnesinde kaç instance var merak ediyorsanız, bunu
 > `count` metodu ile yapmalısınız. `QuerySet` nesnesinde hiç instance var mı
-> diye kontrol etmek istiyorsanız, bunu  `exists`  metodu ile yapmalısınız.
+> diye kontrol etmek istiyorsanız, bunu `exists` metodu ile yapmalısınız.
 > Bu metotları kullanmak (len ve bool’a nispeten) katbekat daha
 > performanslıdır.
 
@@ -513,11 +513,11 @@ if qs:
     print("Artist found!")
 ```
 
-Bu kullanımda koşul bloğu  `QuerySet`  nesnesinin bool metodunu çağıracak,
-dolayısıyla tüm  `QuerySet`  boş yere çözümlenmiş olacak, çünkü burada model
+Bu kullanımda koşul bloğu `QuerySet` nesnesinin bool metodunu çağıracak,
+dolayısıyla tüm `QuerySet` boş yere çözümlenmiş olacak, çünkü burada model
 instance’larına dair bir kullanım yok;  **derdimiz varlık-yokluk**.
 
-Bunlar dışında  `QuerySet`  nesneleri  _pickle’lamak_,  _cache’lamak_  ve slice
+Bunlar dışında `QuerySet` nesneleri  _pickle’lamak_,  _cache’lamak_  ve slice
 alırken step parametresi göndermek de çözümlenmeye yol açıyor. Fakat bu
 yapıları kullanmaya başladığınız zaman zaten içgüdüsel olarak bunun
 gerçekleşeceğini bileceksiniz, o yüzden daha detaya girmeye gerek görmüyorum.
@@ -532,17 +532,17 @@ artistleri bulmak istediğimizi varsayalım, bu durumda şunu yapmamız gerekird
 Artist.objects.filter(birth_date__day=F("song_count"))
 ```
 
-`F`’in görevi burada açık,  `QuerySet`‘deki instancelerin  **değeri** için bir
+`F`’in görevi burada açık, `QuerySet`‘deki instancelerin  **değeri** için bir
 referans bırakıyor. Yani `F("song_count")` yazılan yere sanki
-`artist.song_count` yazılmış gibi oluyor, tabii bu  `artist`  dinamik. Yine
+`artist.song_count` yazılmış gibi oluyor, tabii bu `artist` dinamik. Yine
 `save` metodu üstünde duruken, bu ifadenin instance bazlı olarak da
-kullanılabileceğini görmüştük. Aggregation yaparken de  `F`  sıklıkla
+kullanılabileceğini görmüştük. Aggregation yaparken de `F` sıklıkla
 kullanacağımız ifadelerden biri olacak.
 
 ## Q ile kompleks sorgular
 
 Şimdiye kadar sadece AND sorgularını yapmayı öğrendik. Daha kompleks sorgular
-için bize  `Q`  nesnesi yardımcı olacak. Bu nesneyle beraber hem AND, hem OR
+için bize `Q` nesnesi yardımcı olacak. Bu nesneyle beraber hem AND, hem OR
 sorguları, bu sorguların tersleri ve kombine edilmiş hallerini
 oluşturabiliyoruz. Örneğin adı Rick ya da soyadı Astley olan artistleri
 süzmek için:
@@ -551,9 +551,9 @@ süzmek için:
 Artist.objects.filter(Q(name="Rick") | Q(surname="Astley"))
 ```
 
-Gördüğünüz gibi OR sorgusu yapmak için  `|`  operatörünü kullanıyoruz. Benzer
-şekilde AND için  `&`  kullanabiliriz. Fakat  `&`  genelde kullanılmaz, zira
-AND’lamak istediğimiz lookup’ı  `filter`‘e argüman olarak da verebiliriz; yine
+Gördüğünüz gibi OR sorgusu yapmak için `|` operatörünü kullanıyoruz. Benzer
+şekilde AND için `&` kullanabiliriz. Fakat `&` genelde kullanılmaz, zira
+AND’lamak istediğimiz lookup’ı `filter`‘e argüman olarak da verebiliriz; yine
 de iç içe geçmiş lookuplar için bilmek faydalı. Olumsuzluk katmak için
 `~` operatörünü kullanıyoruz. Şimdi şu örneğe bakalım:
 
@@ -564,18 +564,18 @@ de iç içe geçmiş lookuplar için bilmek faydalı. Olumsuzluk katmak için
 Bu lookup’da da adı Rick olan ve soyadı Astley olmayan VEYA doğum yılı 1966
 olan artistleri süzüyor. Her logical operatör kombinasyonunda olduğu gibi
 burada da parantezler işi değiştirebilir. `Q` ile oluşturacağınız lookup’ları
-bir değişkende tutup daha sonra bu değişkeni argüman olarak  `QuerySet`
+bir değişkende tutup daha sonra bu değişkeni argüman olarak `QuerySet`
 metotlarına da gönderebiliyoruz. Bazen lookup’ların dinamik olmasını istiyoruz,
 örneğin kullanıcının seçimine göre bir lookup’ı çıkarmak ya da eklemek
 isteyebiliriz. Bu durumda `|=` ve `&=` operatörlerini kullanabilirsiniz.
-Bunlar  `+=`, `-=`  operatörleri ile benzer yapıya sahipler. Yine  `Q`
+Bunlar `+=`, `-=` operatörleri ile benzer yapıya sahipler. Yine `Q`
 bağlamında `F` gibi ifadeler kullanmak mümkün.
 
 ## Aggregation işlemleri
 
 Bazen de instance’ların toplu olarak bir araya geldiği zaman oluşturdukları
 niteliklerle ilgileniyoruz. Mesela oluşturduğumuz sorguda ne kadar eleman var
-diye merak ediyoruz, ki bunun  `count`  ile yapılacağını söylemiştik. Bu en
+diye merak ediyoruz, ki bunun `count` ile yapılacağını söylemiştik. Bu en
 basit aggregation isteklerinden bir tanesi. Aggregation yapmak için Django’nun
 sunduğu fonksiyonları kullanacağız, bunlardan önemli bir kaçını `Min`,
 `Max`, `Count`, `Sum` ve `Avg` olarak sıralayabiliriz. Şimdi
@@ -586,14 +586,14 @@ Artist.objects.aggregate(average_song_count=Avg("song_count"))
 ```
 
 Bu aggregation’ın amacı tüm artistlerin ortalama şarkı sayısını bulmak.
-Bu işlemi yapmak için  `QuerySet`  üzerinde bulunan  `aggregate`  metodunu
-tercih ettim.  `aggregate`  yine  `get`  gibi zincirin son halkası olmak
-zorunda, zira bu metot bir dictionary döndürüyor (yani  `QuerySet`  olduğu
+Bu işlemi yapmak için `QuerySet` üzerinde bulunan `aggregate` metodunu
+tercih ettim. `aggregate` yine `get` gibi zincirin son halkası olmak
+zorunda, zira bu metot bir dictionary döndürüyor (yani `QuerySet` olduğu
 yerde çözümleniyor).
 
 Şarkı sayısı en fazla olan artistin kaç tane şarkısı olduğunu bulmak isteseydim
-`Avg`  yerine  `Max`  kullanabilirdim. En fazla şarkı sayısı bilgisini
-kullanarak da  `song_count`  field’ini süzme yoluyla o artistin kendisine
+`Avg` yerine `Max` kullanabilirdim. En fazla şarkı sayısı bilgisini
+kullanarak da `song_count` field’ini süzme yoluyla o artistin kendisine
 de ulaşabilirdik. Yine bu fonksiyonları kombine ederek aritmetik işlemler de
 gerçekleştirebiliyoruz. Örneğin en düşük şarkı sayısı ile en fazla şarkı sayısı
 arasındaki farkı `Max("song_count") - Min("song_count")` şeklinde bulabiliriz.
@@ -603,22 +603,22 @@ uğraşıyoruz. Bu durumu bir forum bağlamında inceleyelim. Bir forumda konula
 olur ve bu konulara yorumlar gelir. Bu bağlamda en yaygın sorgulardan biri
 konularla birlikte bu konulara gelen toplam yorum sayısını göstermektir. Şimdi
 bunu nasıl yapacağımızı görelim (Bu sorguda `Comment` modelinin `Topic`‘e
-`ForeignKey`  ile ilişkilendirdiğini varsayılıyor):
+`ForeignKey` ile ilişkilendirdiğini varsayılıyor):
 
 ```python
 Topic.objects.annotate(comment_count=Count("comment_set"))
 ```
 
-`annotate`  yine zincirlenebilen bir  `QuerySet`  metodu, bize aliasing (takma
+`annotate` yine zincirlenebilen bir `QuerySet` metodu, bize aliasing (takma
 isim verme işlemi) sağlıyor ve bu tip aggregation senaryolarında sıkça
 kullanılıyor. Bu metot ile takma isim verdiğimiz ifadeleri daha sonra aynı
-field’lerde olduğu gibi  `F`  ile referans gösterebiliyoruz, aynı zamanda takma
+field’lerde olduğu gibi `F` ile referans gösterebiliyoruz, aynı zamanda takma
 isme bağlı süzme işlemleri gerçekleştirebiliyoruz. Bu bağlamda sadece yorum
 yapılmış konuları listelemek isteseydik `filter` metodunu zincire ekleyip
-`comment_count__gt=0`  şeklinde bir lookup argümanı kullanabilirdik.
+`comment_count__gt=0` şeklinde bir lookup argümanı kullanabilirdik.
 
 Bazen de `Comment` bazlı bir süzme yapmak isteyebiliriz, o zaman önce bir
-`filter`  zinciri ekleyip burada ilişkisel field’i kullanarak bir süzme
+`filter` zinciri ekleyip burada ilişkisel field’i kullanarak bir süzme
 yapabiliriz, fakat birden fazla aggregation yapacaksanız ve bu aggregation’lar
 farklı koşullar istiyorsa bu yöntemi işe yaramayacaktır; bunun için de
 aggregation fonksiyonunun `filter` argümanına `Q` nesneleri ile
@@ -626,7 +626,7 @@ oluşturduğumuz süzgeçleri gönderebiliriz; bu durumda yine `comment_set`
 ön ekini kullanmak durumda olduğunuzu da ekleyeyim.
 
 > Eğer takma isim verdiğiniz bir ifadeyi kullanıcıya gösterim için
-> kullanmayacaksanız, yani sadece o sorgu için oluşturulmuş ise  `annotate`
+> kullanmayacaksanız, yani sadece o sorgu için oluşturulmuş ise `annotate`
 > yerine `alias` metodunu kullanmalısınız. Bu sayede ufak bir performans
 > kazanımınız olacaktır.
 
@@ -640,7 +640,7 @@ metodun gövdesine de oluşturduğumuz aggregation ifadesini yazardık.
 > Arka plandaki bazı çeşitli sebepler yüzünden (SQL’da subquery değil, join
 > kullanılması) bir sorguda birden fazla aggregation yaparsanız bunların sonucu
 > yanlış olacaktır. Bunun önüne geçmek için kullandığınız aggregation
-> fonksiyonlarında  `distinct=True`  argümanını kullanmayı deneyebilirsiniz.
+> fonksiyonlarında `distinct=True` argümanını kullanmayı deneyebilirsiniz.
 
 Peki ilişkisel bir bağlamda artistlerin ortalama şarkı sayısını nasıl bulurduk?
 Bunu yapmak için öncelikle her artiste şarkı sayısını aggregate etmemiz ve daha
@@ -656,8 +656,8 @@ Artist.objects.annotate(song_count=Count("song_set")).aggregate(
 
 Şimdi biraz da `values` metodu üzerinde duralım. Normalde bu metot sizin
 modelden field’leri seçip dictionary halde almanıza yarıyor. Fakat işin içine
-aggregation girince bu metot SQL’da  `GROUP BY`  kısmına girecek ifadeleri
-belirliyor. O yüzden  `values`  kullanırken bunu göz önünde bulundurmakta fayda
+aggregation girince bu metot SQL’da `GROUP BY` kısmına girecek ifadeleri
+belirliyor. O yüzden `values` kullanırken bunu göz önünde bulundurmakta fayda
 var. Örneğin şu sorguyu ele alalım:
 
 ```python
@@ -679,7 +679,7 @@ mümkün.
 Öğrendiğimiz bilgiler doğrultusunda manager’lara ihtiyacımız olacak. Daha önce
 manager’ların model bazında (instance bazında değil) işlemler konusunda bize
 yardımcı olacaklarını söylemiştik. Örneğin sürekli olarak belirli tip artistler
-üzerinden  `QuerySet`‘ler oluşturuyorsak, bu duruma özel bir kısayol
+üzerinden `QuerySet`‘ler oluşturuyorsak, bu duruma özel bir kısayol
 oluşturabiliriz. Şimdi örnek bir manager inceleyelim:
 
 ```python
@@ -690,7 +690,7 @@ class ArtistManager(models.Manager):
         )
 ```
 
-Bu manager’a  `popular`  isimli metot eklenmiş, bu sayede popüler artistleri
+Bu manager’a `popular` isimli metot eklenmiş, bu sayede popüler artistleri
 sorgulamak için bir kısayol oluşturulmuş.
 
 Bu manager’ı modele kaydetmek için model gövdesine, tercihen field
@@ -698,16 +698,16 @@ tanımlarından hemen sonra `objects_custom = ArtistManager()` şeklinde bir yap
 yerleştirmemiz gerekiyor. Ben burada kendi oluşturduğum manager’ı
 `objects_custom` namespace’inde kullanmak istediğim için öyle adlandırdım, siz
 dilediğiniz gibi adlandırabilirsiniz. Böylelikle bu manager’a ve içinde bulunan
-metotlara  `Artist.objects_custom.filter(...)`  şeklinde ulaşılabilir. Bu
+metotlara `Artist.objects_custom.filter(...)` şeklinde ulaşılabilir. Bu
 manager’da Django’nun bize sunduğu varsayılan manager’ı miras aldık, ki bu
 zaten bildiğiniz gibi `objects` namespace’inde olan manager;
 `objects = models.Manager()`. Dilerseniz bu namespace’i override edebilirsiniz,
 ama bu pek tercih edilmez, zira projeye yeni katılacak biri için ekstra bir
-zihinsel masraf yaratmış olursunuz, hele ki öncül  `QuerySet`‘i değiştiriyor
+zihinsel masraf yaratmış olursunuz, hele ki öncül `QuerySet`‘i değiştiriyor
 iseniz.
 
 Bir parantez olarak da, ters ilişkilerde manager’ı belirtmenin şöyle bir yolu
-var (belirtmediğiniz durumlarda  `models.Manager()`  kullanılır):
+var (belirtmediğiniz durumlarda `models.Manager()` kullanılır):
 
 ```python
 artist.song_set(manager="objects_custom")
@@ -715,9 +715,9 @@ artist.song_set(manager="objects_custom")
 
 Manager’ın öncül `QuerySet` biçimine değiştirmek için `get_queryset` isimli
 özel metodu override etmeniz gerekiyor, bu durumda manager’ı takip edecek ilk
-`QuerySet`  metodunu ekstra bir custom metot çağırmadan kullanabilirsiniz.
-Örneğin yukarıdaki manager’a alternatif olarak  `objects_popular`  isimli bir
-manager oluşturup öncül  `QuerySet`  biçimini değiştirebilirdik:
+`QuerySet` metodunu ekstra bir custom metot çağırmadan kullanabilirsiniz.
+Örneğin yukarıdaki manager’a alternatif olarak `objects_popular` isimli bir
+manager oluşturup öncül `QuerySet` biçimini değiştirebilirdik:
 
 ```python
 class ArtistManager(models.Manager):
@@ -737,7 +737,7 @@ metot ekleyebilirsiniz. Mental yükü azaltmak adına manager’ları sınıflan
 
 > Django varsayılan manager seçimini manager’ların model gövdesindeki sırasına
 > göre yapıyor, o yüzden kendi manager’larınızı kaydederken ilk sıradaki
-> manager’ın öncül  `QuerySet`  metodunu override etmemesi önemli, aksi
+> manager’ın öncül `QuerySet` metodunu override etmemesi önemli, aksi
 > takdirde ileride istenmeyen problemlerle karşılaşabilirsiniz. Varsayılan
 > manager’ı elle belirlemek için `Meta.default_manager_name`
 > kullanabilirsiniz.
@@ -745,7 +745,7 @@ metot ekleyebilirsiniz. Mental yükü azaltmak adına manager’ları sınıflan
 ## Sorgu optimizasyonu
 
 Kompleks sorguların yanında, bunları optimize etmek de önemli. İstemediğimiz
-hiçbir veriyi çekmek istemeyiz; veriyi yanlış işlemeyi de.  `QuerySet`‘lerin
+hiçbir veriyi çekmek istemeyiz; veriyi yanlış işlemeyi de. `QuerySet`‘lerin
 tembelliği başlığı altında, yazılan sorgunun çözümlenmesinin kullanıcıya bilgi
 gösterilecek son ana kadar sarkıtılması gerektiğini öğütlemiştik. Bu da aslında
 Django’da sorgu optimizasyonda  **en temel**  kural.
@@ -757,7 +757,7 @@ ve toplam kaç tane sorgu yapılmış gibi birtakım bilgilere erişebiliyoruz. 
 yanında yazdığınız bir query’nin oluşturduğu SQL sorgusunu görmek için
 `str(QuerySet.query)` yapısını kullanabilirsiniz.
 
-Bu konulu yazılarda adettendir, `prefetch_related` ve  `select_related`
+Bu konulu yazılarda adettendir, `prefetch_related` ve `select_related`
 baş köşeye konur, ben de öyle yapacağım. Bir sorgu yaptığınız zaman (aksini
 belirtmedikçe) Django ilgili model’deki  **her** field’i çeker, ama ilişkisel
 field’leri çekmez (daha doğrusu ilişkisel instance’ı), zira veri tabanı
@@ -769,16 +769,16 @@ kendisiyle alakalı bilgilerle (yani ilişkisel olmayan field’ler) her bir
 şarkıya dair bilgileri göstermek isteriz. Bu da 100 şarkılık bir oynatma
 listesi için 101 tane sorgu yapılması anlamına gelir, zira Django her bir şarkı
 için ayrı sorgu yapar, bu da canımızı sıkar tabii. İşte `select_related` ve
-`prefetch_related`,  `QuerySet`‘e benim bu ilişkisel verilere de ihtiyacım var
+`prefetch_related`, `QuerySet`‘e benim bu ilişkisel verilere de ihtiyacım var
 demenin bir yolu.
 
-> Prefetch edilmemişse bile ilişkili instance’ın id’sine  `obj.relatedfield_id`
-> şeklinde ulaşabilirsiniz. Eğer  `obj.relatedfield.id`  kullanırsanız bu,
+> Prefetch edilmemişse bile ilişkili instance’ın id’sine `obj.relatedfield_id`
+> şeklinde ulaşabilirsiniz. Eğer `obj.relatedfield.id` kullanırsanız bu,
 > bahsettiğimiz sebeplerden dolayı ekstra bir sorguya sebep olacaktır.
 
 Bu metotların farkları, oluşturulan ilişkiye göre değişiyor. `prefetch_related`
-m2m senaryolarında uygunken  `select_related`  `ForeignKey`  senaryolarında
-uygun düşüyor. Bunları  `QuerySet`  zincirine ekliyoruz, argüman olarak
+m2m senaryolarında uygunken `select_related` `ForeignKey` senaryolarında
+uygun düşüyor. Bunları `QuerySet` zincirine ekliyoruz, argüman olarak
 ilişkisel field’in ismini alıyorlar, aynı zamanda  **ilişkinin ilişkisini**
 (bu prefetch yaparken istenen bir durumdur) de takip edebiliyorlar.
 `prefetch_related` için aynı zamanda yapılacak sorguyu `Prefetch` nesnesini
@@ -787,11 +787,11 @@ kullanarak belirleyebiliyoruz.
 Django’nun varsayılan olarak her field’i çekmesinin pek de elverişli olmadığını
 idrak etmişsinizdir. Bazen 30 field’den sadece 5 tanesine ihtiyacımız olabilir.
 Bu durumlar için de çeşitli metotlarımız var. `values` ve `values_list` field
-seçmemize yarıyor, aynı zamanda  `QuerySet`‘i sırasıyla dictionary ve list
+seçmemize yarıyor, aynı zamanda `QuerySet`‘i sırasıyla dictionary ve list
 formatına dönüştürüyor fakat eğer model metotlarını kullanacaksak bu durumu
 istemeyiz.
 
-Bu bağlamda  `only`  ve  `defer`  metotlarını incelememiz iyi olur. Bunlar
+Bu bağlamda `only` ve `defer` metotlarını incelememiz iyi olur. Bunlar
 maşayla tutulması gereken metotlar; yanlış ve dikkatsiz kullanımda optimizasyon
 yapacağım diye sizi zarara sokabilir. Bu metotlar da field seçmenize yarıyor,
 fakat olur da seçmediğiniz bir field’i çağırırsanız Django bu field’ler için
@@ -801,12 +801,12 @@ zira kendileri dictionary ve list nesnelerine dönüştükleri için artık veri
 tabanı ile bir ilişkileri kalmıyor.
 
 Eğer `QuerySet` bir kere çözümlenecekse `exists` ve `count` metotlarını ayrı
-çağırmayın, çözümlenmiş nesne üzerinde  `bool`  ve  `len`  metotlarını
+çağırmayın, çözümlenmiş nesne üzerinde `bool` ve `len` metotlarını
 kullanabilirsiniz, zira Django bunları cache’liyor. Template’lerde yine bu
-kullanımını  `with`  etiketini kullanarak taklit edebilirsiniz.
+kullanımını `with` etiketini kullanarak taklit edebilirsiniz.
 
 Toplu işlemler için, Django’nun sunduğu mekanizmaları kullanın. Eğer for
-loop ile bir  `QuerySet`‘i iterate ediyorsanız, kendinize bu işlemin Django
+loop ile bir `QuerySet`‘i iterate ediyorsanız, kendinize bu işlemin Django
 metotları kullanılarak toplu olarak yapılıp yapılamayacağını sorun.
 
 > Emin olmak için her zaman profiling yapın, django-debug-toolbar can

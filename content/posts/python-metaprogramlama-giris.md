@@ -40,14 +40,14 @@ controller’e çevrilmiş oluyor, işte fazla kod yazdırmadan işlevsellik
 kazandırmanın en basit örneklerinden biri.
 
 Peki decorator’lar nedir? Biliyorsunuz ki Python’da **her şey** bir nesne,
-mesela  `1.5 + 2.5`  yazmak yerine `float` nesnesinin metodunu
+mesela `1.5 + 2.5` yazmak yerine `float` nesnesinin metodunu
 `1.5.__add__(2.5)` şeklinde çağırabiliyoruz.
 
 Bazı nesneler var ki bunların çağrılabilme özellikleri var, örneğin
 fonksiyonlar veya metotlar; bunları çağırmak için de `()` kullanıyoruz. `int`
 de bir nesne bildiğiniz gibi, eğer bu nesneyi çağırırsanız size 0 döner
 (bir argüman verirseniz de o argümanı int’e cast eder/çevirir ve onu döner).
-Fakat  `5`  ‘i düşünelim, bu da bir nesne ve tipi `int` ama bu nesne
+Fakat `5` ‘i düşünelim, bu da bir nesne ve tipi `int` ama bu nesne
 çağrılabilir değil:
 
 ```python-repl
