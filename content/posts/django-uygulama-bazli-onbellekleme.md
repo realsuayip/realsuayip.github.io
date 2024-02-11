@@ -57,7 +57,7 @@ def categories(request):
 1. Belirlenen anahtar cache veri tabanında kayıtlı mı diye bakılır.
 2. Eğer kayıtlı ise (cache hit) bu kayıt döndürülür, yeni hesaplama yapılmaz.
 3. Eğer kayıtlı değilse (cache miss) belirlenen anahtarla cache veri tabanına
-yeni kayıt hesaplanarak eklenir.
+   yeni kayıt hesaplanarak eklenir.
 
 Örneğimizde  `cache_key`  hesaplanacak değerin bulunması için tutulan eşsiz bir
 anahtar, bu anahtar sayesinde cache veri tabanına erişeceğiz. Yukarıda
@@ -104,12 +104,14 @@ yapıldığı yerde yine muhtemelen LRU cache’ye ihtiyacınız var zira benzer
 İşte cache yapısını kullanmak bu kadar basit. İşin sonunda birkaç metot ve
 fonksiyon kullanarak uygulamanıza büyük bir hız avantajı kazandırabilirsiniz.
 Bu metotların çeşitliliği Django ile artıyor tabii, `cache` nesnesinin
-etrafında toparlanmış bir sürü [wrapper fonksiyonlar](https://docs.djangoproject.com/en/3.2/topics/cache/#template-fragment-caching)
+etrafında toparlanmış bir sürü
+[wrapper fonksiyonlar](https://docs.djangoproject.com/en/3.2/topics/cache/#template-fragment-caching)
 var ve örneğin view’lerinizi kolay bir şekilde cache etmenizi sağlıyor. Yine
 template’lerin içinde de  `cache`  tag’i kullanabiliyorsunuz. Son olarak, eğer
 sürekli `cache` nesnesi ile uğraşmak istemiyorsanız ve Django’nun sunduğu
 wrapper’ler de pek işinize yaramıyorsa bu bahsettiğim 3 adımlık senaryoyu
-gerçekleştiren bir decorator yazdım, ona da [buradan](https://github.com/realsuayip/django-sozluk/blob/36cdf3f10ed18d0a57f1420b0392cf15ef03985d/dictionary/utils/decorators.py#L9)
+gerçekleştiren bir decorator yazdım, ona da
+[buradan](https://github.com/realsuayip/django-sozluk/blob/36cdf3f10ed18d0a57f1420b0392cf15ef03985d/dictionary/utils/decorators.py#L9)
 ulaşabilirsiniz.
 
 Son olarak ufak bir bilgi, yazının en başında her request’te veri tabanına
@@ -117,5 +119,6 @@ istek atmanın istemediğimiz bir durum olduğunu bu sebeple caching yapmak
 istediğimizi söylemiştim. E bildiğiniz gibi her request’te bir `request.user`
 ‘imiz var. Bu tabii havadan gelmiyor, Django her request’te mevcut kullanıcıyı
 bulmak için session tablosuna istek atıyor. Session’a ait kullanıcı referansını
-Django’nun sunduğu bir [backend](https://docs.djangoproject.com/en/3.2/topics/http/sessions/#using-cached-sessions)
+Django’nun sunduğu bir
+[backend](https://docs.djangoproject.com/en/3.2/topics/http/sessions/#using-cached-sessions)
 ile cache’ye alabiliyoruz.

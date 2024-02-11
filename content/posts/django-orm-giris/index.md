@@ -24,8 +24,8 @@ sağlıyor) bağlamında yazılmış olan bu ORM’u bir inceleyeyim, yazayım d
 
 ORM ile ilk yolculuğumuz modellerden başlıyor. **Model** dediğimiz yapı veri
 tabanında saklamak istediğimiz verilen bir  **suretini** ortaya koyuyor.
-Tanımladığımız  her bir model veri tabanında bir tabloyu temsil ediyor, bu
-model içinde tanımladığımız  her bir **field** ise bu tablodaki bir sütuna
+Tanımladığımız her bir model veri tabanında bir tabloyu temsil ediyor, bu
+model içinde tanımladığımız her bir **field** ise bu tablodaki bir sütuna
 işaret ediyor. Model yapılarını kullanarak aynı zamanda bu tabloya dair
 **sorguları** (query)  gerçekleştiriyoruz. Her modelin aynı zamanda bir
 **manager’ı** olmak zorunda, bu yapılarla modelimizle sorgu yaparken
@@ -80,28 +80,28 @@ kendi çatısını da es geçmiyor ve yine çok işimize yarayacak olan
 veriyor.
 
 > Field’leri isimlendirirken çok düşünün. Zira bunlar refactoring’i oldukça can
-> sıkıcı şeyler. Örneğin  burada zaten artistten bahsettiğim için ad kısmını
+> sıkıcı şeyler. Örneğin burada zaten artistten bahsettiğim için ad kısmını
 > **name** olarak bıraktım, çoğu kişinin yaptığını gördüğüm hatalardan biri de
 > böyle bir tabloda ad için **artist_name** isimli bir field oluşturmaları.
 
 Field üstbilgilerinden önemli birkaçını zikredelim.  **`null`** field’in boş
 kalması durumda veri tabanında `NULL` olarak temsil edilip edilmeyeceğine karar
-veren bir argüman,  eğer belirtmezseniz `False` oluyor ki bu da bu field’in
+veren bir argüman, eğer belirtmezseniz `False` oluyor ki bu da bu field’in
 asla boş kalmaması gerektiğine karar veriyor  (string’lere dair aşağıda bir
-anekdot vereceğim).  **`blank`** app’ler için bir üstbilgi ve  admin sitesinde
+anekdot vereceğim).  **`blank`** app’ler için bir üstbilgi ve admin sitesinde
 (ki kendisi bir app’tir) bu field’in boş bırakılıp bırakılamayacağına karar
-veriyor.  **`db_index`** bu field için bir index oluşturulup oluşturulmayacağına
-karar veriyor. **`default`** varsayılan bir değer atamaya yarıyor.
-**`unique`** bu field’in tablo boyunca eşsiz olup olmayacağını belirliyor.
-**`validators`** bu field’in içeriğine ve doğruluğuna dair kontrolleri yapan
-validator yapılarını (Django bu yapıları sunar) içeriyor; bu üstbilgi yine
-sadece app’ler için; yani bu validator’ları ihlal eden verileri veri tabanına
-sokmak gayet mümkün.
+veriyor.  **`db_index`** bu field için bir index oluşturulup
+oluşturulmayacağına karar veriyor. **`default`** varsayılan bir değer atamaya
+yarıyor. **`unique`** bu field’in tablo boyunca eşsiz olup olmayacağını
+belirliyor. **`validators`** bu field’in içeriğine ve doğruluğuna dair
+kontrolleri yapan validator yapılarını (Django bu yapıları sunar) içeriyor; bu
+üstbilgi yine sadece app’ler için; yani bu validator’ları ihlal eden verileri
+veri tabanına sokmak gayet mümkün.
 
 > Yazı tabanlı field’lere (örneğin TextField, CharField ve EmailField gibi)
 > **null** argümanı `False` olmalı (varsayılan hali böyledir). Aksi takdirde bu
 > field’lerin boş değerleri için iki seçenek çıkıyor  `NULL` ve `""`
-> (boş string).  Aynı şeyi ifade etmek için veri tabanında iki farklı değer
+> (boş string). Aynı şeyi ifade etmek için veri tabanında iki farklı değer
 > tutulması istemediğimiz bir durum; bunun yüzünden ileride can sıkıcı
 > hadiseler meydana gelmesini istemeyiz.
 
@@ -122,7 +122,7 @@ için  `ForeignKey` kullanıyoruz; yani sahiplerin önem arz ettiği durumlar.
 sahiplerin önemsiz olduğu durumlar. m2m yapısını çoğunlukla herkesin/her şeyin
 sahip olabileceği durumlarda kullanıyoruz, mesela bir şarkıya ancak bir artist
 sahip olabilir fakat o şarkının spesifik bir oynatma listesine ait olmasına
-gerek yok, bu durumda  oynatma listesi ile şarkılar arasında kurulacak bir
+gerek yok, bu durumda oynatma listesi ile şarkılar arasında kurulacak bir
 bağda m2m uygun düşer. _(Gerçek hayat senaryosunda şarkılar ve artisti direkt
 ilişkilendirmek doğru olmazdı; şarkıların sahipleri aslında albümlerdir ve
 sanatçılar albümlere sahiptir. Aynı zamanda bir şarkıya birden fazla artist
@@ -131,12 +131,12 @@ de sahip olabilir, ama bu detayları örnek hatırına unutuverin)_
 m2m yapısı anladığınız üzere üçüncü bir tabloya sebep oluyor. Bazen bu tabloya
 da ek field eklemek isteyebiliyoruz. Aynı örnekten gidersek, şarkının oynatma
 listesine eklenme tarihi bu field’lerden biri olabilir. Bu durumda modeli açık
-açık tanımlamamız ve  **through** argümanı ile m2m’de belirtmemiz  gerekiyor.
+açık tanımlamamız ve  **through** argümanı ile m2m’de belirtmemiz gerekiyor.
 Eğer model tanımını yaparken bu üçüncü tabloyu oluşturmayı atladıysanız daha
 sonra da oluşturmanız mümkün. Bu üçüncü tabloyu oluşturmadığınız durumlarda
 tablonun (auto-generated) model tanımına erişmeniz yine mümkün.
 
-İlişkisel field’lerde atlanan bir diğer özellik ise  ters ilişkiler. Örneğin
+İlişkisel field’lerde atlanan bir diğer özellik ise ters ilişkiler. Örneğin
 bir artistin sahip olduğu şarkıların hepsini nasıl bulabiliriz? Şarkı modeli
 ile inşa ettiğimiz bir query’de artist field’ini kullanarak süzebiliriz mesela.
 Ters ilişkiler bunu yapmayı çok sade ve okunaklı hale getiriyor. Örneğin
@@ -153,7 +153,7 @@ modelin ismini alıyor ve sonuna  `_set`  ekliyor. Bu isimlendirme biçimi benim
 hoşuma gitmiyor ve genelde o modelin çoğul hali olarak değiştiriyorum, bu
 senaryoda `songs` yapardım mesela (bu değişiklik field’de **related_name**
 argümanı ile yapılıyor). Bu durumda `artist.songs.all()` hakikaten çok
-açıklayıcı bir yapı oluyor.  Ters relation kullanmadan da şu şekilde aynı
+açıklayıcı bir yapı oluyor. Ters relation kullanmadan da şu şekilde aynı
 sonuca varabilirdik:
 
 ```python
@@ -162,7 +162,7 @@ Song.objects.filter(artist=artist_obj).all()
 
 > Ters ilişkilere isim verin, unutmayın ve kullanın.
 
-Ek olarak bire bir ilişkiler  için  `OneToOneField`  var. Her ne zaman bir
+Ek olarak bire bir ilişkiler için  `OneToOneField`  var. Her ne zaman bir
 model instance’ın bir başka model instance ile (ve bu ilişki eşsiz olmalı)
 eşleşmesi gerekiyorsa bu yapıyı kullanmamız gerekiyor. Örneğin şarkımızın bir
 müzik videosu olsaydı (bu video için de bir model gerektiğini varsayalım),
@@ -171,11 +171,11 @@ böyle bir yapı kullanabilirdik. Bu yapıya aynı zamanda  `ForeignKey` ile,
 ek olarak ters ilişki kullanıldığı zaman direkt model instance veriyor
 (`ForeignKey`’de tek elemanlı `QuerySet`).
 
-Bazen de  modeli kendisiyle ilişkilendirmek  isteyebiliyoruz. Örneğin her
-artistin favori artistleri olduğunu varsayabiliriz (m2m).  Bu durumda argüman
-olarak bir  model class'i yerine `"self"` (string olarak) vermemiz gerekiyor
-. Burada bir ufak detay;  Django m2m field’ini varsayılan durumda simetrik
-olarak kabul ediyor. Yani bizim örneğimizde  eğer bir artist başka bir artisti
+Bazen de modeli kendisiyle ilişkilendirmek isteyebiliyoruz. Örneğin her
+artistin favori artistleri olduğunu varsayabiliriz (m2m). Bu durumda argüman
+olarak bir model class'i yerine `"self"` (string olarak) vermemiz gerekiyor
+. Burada bir ufak detay; Django m2m field’ini varsayılan durumda simetrik
+olarak kabul ediyor. Yani bizim örneğimizde eğer bir artist başka bir artisti
 favori artisti olarak eklerse, favori olarak eklenen artist de otomatik olarak
 öncül artisti favori eklemiş oluyor. Bu durumun önüne geçmek için `symmetrical`
 argümanını `False` olarak değiştirmeniz gerek.
@@ -217,7 +217,7 @@ artistin ad ve soy ad bilgisine erişebiliyoruz. Burada kullandığım `property
 built-in fonksiyon da önem arz ediyor, eğer yazdığınız metodun bir field gibi
 , yani bir nitelik gibi erişilebilir olmasını istiyorsanız bu fonksiyonu
 kullanmanız gerek; aksi durumda normal metot çağırma stilini (parantezler ile)
-kullanmanız gerekiyor.  Hangisini kullanacağınıza pragmatik açıdan yaklaşarak
+kullanmanız gerekiyor. Hangisini kullanacağınıza pragmatik açıdan yaklaşarak
 karar verebilirsiniz.
 
 > Bazen bu özel property’leri oluştururken veri tabanına maliyetli bir takım
@@ -254,11 +254,11 @@ bağlantıları/ilişkileri doğrulamak için kullanabiliriz.
 > yüzden bu metotları değiştirirken ileride yaşanabilecek toplu değişim
 > senaryolarını düşünüp alternatif çözümleri elde bulundurmak şart.
 
-Model metotlarını inceledikten sonra görüyoruz ki  instance’a dair her aksiyonu
+Model metotlarını inceledikten sonra görüyoruz ki instance’a dair her aksiyonu
 model tanımında halledebiliyoruz (ki `QuerySet`‘lere dair olan her şeyi de
 manager’lar yoluyla halledeceğiz). Bu da şu soruyu karşımıza çıkarıyor: “Ben
 veri tabanı ile olan işlerimi model tanımında mı halletmeliyim yoksa `View`‘da
-mı?”  Bu soruya dair çeşitli görüşler var, uzlaşma olacağını düşündüğüm görüş
+mı?” Bu soruya dair çeşitli görüşler var, uzlaşma olacağını düşündüğüm görüş
 ise şu: Eğer yazılacak olan logic birden fazla yerde kullanılıyorsa model
 tanımında; sadece tek seferliğine, spesifik bir yerde, kullanılıyorsa (ve
 bunun ileride değişeceği öngörülmüyor ise) `View`‘da yazılmalı.
@@ -298,7 +298,8 @@ artist.save(update_fields=["song_count"])
 ```
 
 Buradaki problem, yaptığımız işlemin veri tabanında bir karşılığı olmaması,
-bu da bir [race condition](https://docs.djangoproject.com/en/3.1/ref/models/expressions/#avoiding-race-conditions-using-f)
+bu da bir
+[race condition](https://docs.djangoproject.com/en/3.1/ref/models/expressions/#avoiding-race-conditions-using-f)
 oluşturabiliyor (yine instance’ların birbirinden habersiz kalmasıyla ilgili).
 Böyle bağıl bir güncellemede bu durumun önüne geçmek için Django’nun
 sağladığı `F` ifadesini kullanmamız gerek:
@@ -309,7 +310,7 @@ artist.save(update_fields=["song_count"])
 ```
 
 `F`  Django’da temel ve önemli ifadelerden biri. Bu ifadeyle ilgili daha
-detaylı bir tarifi ileride yapacağız. Buradaki  görevi güncelleme yapacak veri
+detaylı bir tarifi ileride yapacağız. Buradaki görevi güncelleme yapacak veri
 tabanı sorgusunu hazırlamak, yani `+=1` ifadesini bağıl field’e de işaret
 ederek SQL’da mantıklı bir biçime çevirmek.
 
@@ -321,14 +322,14 @@ ederek SQL’da mantıklı bir biçime çevirmek.
 Bildiğiniz üzere Django’da CUD işlemlerini neredeyse her zaman `Form` api’si
 (veya bunun türevleri) üzerinden hallediyoruz.  `Form`  kullanmadığınız bir
 bağlamda alışkanlıktan dolayı doğrulama işlemlerini (validation) es geçmeye
-meyilli olabilirsiniz. Veri tabanında olsun, olmasın  bir instance’ın valid
+meyilli olabilirsiniz. Veri tabanında olsun, olmasın bir instance’ın valid
 olup olmadığı `full_clean` metodunu çağırarak anlayabilirsiniz. Eğer garantici
 olmak istiyorsanız, bu metodu `save` metodunda çağırabilirsiniz, bu sayede her
 zaman valid olan instance’lar veri tabanına gidecektir.
 
 > İlişkisel bir field’i olan bir modelde bu field’e değer verirken ilişkili
 > instance’ın kendisine ihtiyacınız yok; sadece bu instace’in pk’si olsa da
-> yeter. Eğer  elinizde pk var ise, boş yere ilgili instance’a ulaşma çabasına
+> yeter. Eğer elinizde pk var ise, boş yere ilgili instance’a ulaşma çabasına
 > girmemelisiniz.
 
 Son olarak sinyaller (**signals**) için ufak bir parantez açalım, zira bu
@@ -345,7 +346,7 @@ isteği için kullanıcı daha az bir çaba sarf etmiş olur.
 
 Peki,  `save`  ve  `delete`  model metotlarından daha önce bahsetmiştik.
 Bunlara denk gelen sinyaller de mevcut, hangisini kullanacağız? Bu da yine
-tartışmalı konulardan, fakat büyük oranda uzlaşma şu yönde: eğer  yapılacak
+tartışmalı konulardan, fakat büyük oranda uzlaşma şu yönde: eğer yapılacak
 işlem sadece model instace’in kendisini etkiliyorsa model metotları, aksi halde
 (yani tablolar arası bir işlemde) sinyaller kullanılmalı.
 
@@ -362,7 +363,7 @@ Artist.objects.all()
 Çok kafa karıştırıcı değil, fakat  `objects`  niteliği biraz kafamızı
 karıştırabilir. Neden  `Artist.all()`değil mesela? Daha önceden manager’ların
 varlığından bahsetmiştik. İşte  `objects` de Django’nun bize verdiği
-varsayılan bir manager.  İleride de kendi manager’larımızı oluştururken bu
+varsayılan bir manager. İleride de kendi manager’larımızı oluştururken bu
 sınıftan miras alarak yapacağız ki Django’nun sunduğu pek çok özelliği
 kullanabilelim.
 
@@ -380,7 +381,7 @@ Artist.objects.all()[:10]
 
 Şimdi `filter`, `exclude` ve `lookup` kavramları üstünde duralım. Adları
 üstünde, `filter` ve `exclude` metotları field’lere bağlı olarak süzme
-işlemleri yapıyor.  Örnek olarak soy adı Astley olan sanatçıların hepsini
+işlemleri yapıyor. Örnek olarak soy adı Astley olan sanatçıların hepsini
 getiren bir sorgu oluşturalım:
 
 ```python
@@ -395,7 +396,7 @@ bir davranış, bunu önlemek için bir `lookup` kullanmamız gerek:
 Artist.objects.filter(surname__iexact="Astley")
 ```
 
-`iexact`  lookup’ı  büyük-küçük harf ayrımını göz ardı ederek aynı değere sahip
+`iexact`  lookup’ı büyük-küçük harf ayrımını göz ardı ederek aynı değere sahip
 mi diye bakıyor. Lookup’lar için genel söz dizimi şu şekilde:
 
 ```python
@@ -422,8 +423,8 @@ Artist.objects.filter(surname__iexact="astley").exclude(name__iexact="rick")
 `filter` ve `exclude` metotlarını tekrar tekrar zincirlememekte fayda var,
 zira her zincirleyişimizde  `QuerySet`  nesnesi “klonlanıyor”, bu da
 performansa etki ediyor. Aynı zamanda  `filter`  zincirlemesi ile ilgili meşhur
-da bir  _problemimiz_ var: Bu  metodu zincirlemek ile metot içine çok sayıda
-argüman göndermek arasında ne fark var?  Örneğin şu iki sorguya bakalım:
+da bir  _problemimiz_ var: Bu metodu zincirlemek ile metot içine çok sayıda
+argüman göndermek arasında ne fark var? Örneğin şu iki sorguya bakalım:
 
 ```python
 Artist.objects.filter(surname="Astley").filter(name="Rick")  # 1
@@ -434,7 +435,7 @@ Görünüşe göre, örneğimizde birinci sorguda önce soy adı Astley olanlar�
 buluyoruz, daha sonra da bu (bulunan) setten adı Rick olanları buluyoruz.
 İkinci sorguda ise adı Rick, soy adı da Astley olan artistleri buluyoruz.
 
-Django’nun da yaptığı hakikatten bu. Fakat  iş ilişkisel field’lerde değişiyor.
+Django’nun da yaptığı hakikatten bu. Fakat iş ilişkisel field’lerde değişiyor.
 Eğer ilişkisel field’ler işin içine girerse, Django bu ardışık süzmeyi yapmak
 yerine her bir filter metodu için ayrı bir değerlendirme yapıyor. Bu örnekteki
 field’leri ilişkisel farz edelim, her artistin bir profili olsun ve bu bilgiler
@@ -447,7 +448,7 @@ Artist.objects.filter(profile__surname="Astley").filter(
 Artist.objects.filter(profile__surname="Astley", profile__name="Rick")  # 2
 ```
 
-İkinci durum yine tahmin ettiğimiz gibi olacak.  İlk sorguda ise ismi Rick
+İkinci durum yine tahmin ettiğimiz gibi olacak. İlk sorguda ise ismi Rick
 **olanlarla birlikte** soy adı Astley olan artistleri içeren bir `QuerySet`
 oluşturmuş olacaktık. İşte bu yüzden ilişkisel süzme yaparken `filter`
 zincirliyorsanız [bu duruma](https://docs.djangoproject.com/en/3.2/topics/db/queries/#spanning-multi-valued-relationships)
@@ -495,7 +496,8 @@ bunu engellemek için bir takım cache nitelikleri de geliştirmiş).
 a) Iteration yapıldığı zaman. Örneğin  `QuerySet`  nesnesini for loop
 kullanarak gezerseniz, for loop’un başladığı satırda çözümlenecektir.
 b) list, tuple, len, bool, repr gibi metotları  `QuerySet`  üzerinde
-kullanıldığı zaman.  `len`  ve  `bool`  özellikle parantez gerektiren kullanımlar.
+kullanıldığı zaman.  `len`  ve  `bool`  özellikle parantez gerektiren
+kullanımlar.
 
 > Eğer bir  `QuerySet`  nesnesinde kaç instance var merak ediyorsanız, bunu
 > `count` metodu ile yapmalısınız. `QuerySet` nesnesinde hiç instance var mı
