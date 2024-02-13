@@ -64,13 +64,13 @@
 /* Operator */ .chroma .o { color: #ff7b72; font-weight: bold }
 /* OperatorWord */ .chroma .ow { color: #ff7b72; font-weight: bold }
 /* Punctuation */ .chroma .p {  }
-/* Comment */ .chroma .c { color: #8b949e; font-style: italic }
-/* CommentHashbang */ .chroma .ch { color: #8b949e; font-style: italic }
-/* CommentMultiline */ .chroma .cm { color: #8b949e; font-style: italic }
-/* CommentSingle */ .chroma .c1 { color: #8b949e; font-style: italic }
-/* CommentSpecial */ .chroma .cs { color: #8b949e; font-weight: bold; font-style: italic }
-/* CommentPreproc */ .chroma .cp { color: #8b949e; font-weight: bold; font-style: italic }
-/* CommentPreprocFile */ .chroma .cpf { color: #8b949e; font-weight: bold; font-style: italic }
+/* Comment */ .chroma .c { color: #8b949e; }
+/* CommentHashbang */ .chroma .ch { color: #8b949e; }
+/* CommentMultiline */ .chroma .cm { color: #8b949e; }
+/* CommentSingle */ .chroma .c1 { color: #8b949e; }
+/* CommentSpecial */ .chroma .cs { color: #8b949e; font-weight: bold; }
+/* CommentPreproc */ .chroma .cp { color: #8b949e; font-weight: bold; }
+/* CommentPreprocFile */ .chroma .cpf { color: #8b949e; font-weight: bold; }
 /* Generic */ .chroma .g {  }
 /* GenericDeleted */ .chroma .gd { color: #ffa198; background-color: #490202 }
 /* GenericEmph */ .chroma .ge { font-style: italic }
