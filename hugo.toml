@@ -28,6 +28,11 @@ name = "Twitter"
 icon = "twitter"
 url = "https://twitter.com/realsuayip/"
 
+[[params.social]]
+name = "RSS Feed"
+icon = "rss"
+url = "https://suayip.dev/index.xml"
+
 # Main menu Items
 
 [[menu.main]]
