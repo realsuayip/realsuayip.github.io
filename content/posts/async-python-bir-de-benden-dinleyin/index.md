@@ -1,6 +1,6 @@
 +++
 title = "Async Python'u bir de benden dinleyin"
-date = 2025-04-17
+date = 2025-04-16T21:56:57Z
 tags = ["python", "turkish"]
 slug = "async-python-bir-de-benden-dinleyin"
 +++
@@ -22,7 +22,7 @@ engeller. Eğer async bir programda bilinçsiz bir şekilde blocking fonksiyonla
 Şimdi aşağıda birkaç tane blocking kod örneği göstereceğim. Bu örneklere bakıp
 blocking'in nerede olduğu tahmin etmeye çalışabilirsiniz.
 
-### Örnek 1
+**Örnek 1:**
 
 ```python
 async def main(service, data):
@@ -39,7 +39,7 @@ Benzer bir sebeple `logging` statement'leri de blocking, ki logger'lar stdout'a
 yazmanın yanında dosyaya yazmaya ya da mail atmaya da configure edilebiliyor
 dolayısıyla bu pek şaşırtıcı olmamalı.
 
-### Örnek 2
+**Örnek 2:**
 
 ```python
 from fastapi import FastAPI
@@ -63,7 +63,7 @@ Bu örnekte `fib()` fonksiyonu blocking olduğu için server thread'ini meşgul
 edecek. Bu fonksiyon aynı zamanda cpu-bound, bu tarz fonksiyonlar kaçınılmaz
 şekilde blocking olur ve buları async bağlamında çalıştırmak istemeyiz.
 
-### Örnek 3
+**Örnek 3:**
 
 ```python
 async def send_invoices_to_service(conn, service):
@@ -87,7 +87,7 @@ onu kullanmalısınız örneğin `async for item in conn.cursor()` gibi ya da bu
 örnekte ana thread'e başka bir iş yapabilmesi için zaman vermelisiniz. Mesela
 her 2000 iterasyonda `asyncio.sleep` yaparak.
 
-### Örnek 4
+**Örnek 4:**
 
 ```python
 import httpx
